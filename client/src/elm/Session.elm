@@ -410,7 +410,7 @@ responseDecoder usrSrc session =
         |> required "email" Dec.string
         |> optional "paymentStatus" decodePaymentStatus (Trial (Time.millisToPosix 0))
         |> optional "confirmedAt" decodeConfirmedStatus (Just (Time.millisToPosix 0))
-        |> optional "language" (Dec.string |> Dec.map Translation.langFromString) Translation.En
+        |> optional "language" (Dec.string |> Dec.map Translation.langFromString) Translation.Ko
         |> optional "documents" Metadata.responseDecoder []
         |> optional "features" Features.decoder []
 

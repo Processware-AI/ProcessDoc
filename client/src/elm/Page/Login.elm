@@ -97,7 +97,7 @@ update msg model =
             ( model, Cmd.none )
 
         SubmittedForm ->
-            case validate modelValidator model of
+            case validate (modelValidator (GlobalData.language model.globalData)) model of
                 Ok validModel ->
                     ( model
                     , sendLoginRequest validModel
@@ -120,21 +120,24 @@ update msg model =
 
         CompletedLogin (Err error) ->
             let
+                lang =
+                    GlobalData.language model.globalData
+
                 fallbackMsg =
-                    ( Form, "Server Issue. Something wrong on our end. Please let us know!" )
+                    ( Form, Translation.enKo lang "Server Issue. Something wrong on our end. Please let us know!" "서버 문제가 발생했습니다. 저희 쪽에 문제가 있는 것 같습니다. 알려 주세요!" )
 
                 errorMsg =
                     case error of
                         Timeout ->
-                            ( Form, "Timed out. Maybe there's a server issue?" )
+                            ( Form, Translation.enKo lang "Timed out. Maybe there's a server issue?" "시간이 초과되었습니다. 서버에 문제가 있는 것 같습니다." )
 
                         NetworkError ->
-                            ( Form, "Network Error. Maybe you're offline?" )
+                            ( Form, Translation.enKo lang "Network Error. Maybe you're offline?" "네트워크 오류입니다. 오프라인 상태인지 확인해 주세요." )
 
                         BadStatus statusCode ->
                             case statusCode of
                                 401 ->
-                                    ( Form, "Email or Password was incorrect.\n\nNOTE: that this is separate from existing gingkoapp.com accounts.\n\n" )
+                                    ( Form, Translation.enKo lang "Email or Password was incorrect.\n\nNOTE: that this is separate from existing gingkoapp.com accounts.\n\n" "이메일 또는 비밀번호가 올바르지 않습니다.\n\n참고: 기존 gingkoapp.com 계정과는 별개입니다.\n\n" )
 
                                 _ ->
                                     fallbackMsg
@@ -148,15 +151,15 @@ update msg model =
             ( model, Route.pushUrl model.navKey Route.Root )
 
 
-modelValidator : Validator ( Field, String ) Model
-modelValidator =
+modelValidator : Translation.Language -> Validator ( Field, String ) Model
+modelValidator lang =
     Validate.all
         [ Validate.firstError
-            [ ifBlank .email ( Email, "Please enter an email address." )
-            , ifInvalidEmail .email (\_ -> ( Email, "This does not seem to be a valid email." ))
+            [ ifBlank .email ( Email, Translation.enKo lang "Please enter an email address." "이메일 주소를 입력해 주세요." )
+            , ifInvalidEmail .email (\_ -> ( Email, Translation.enKo lang "This does not seem to be a valid email." "올바른 이메일 주소가 아닌 것 같습니다." ))
             ]
-        , ifTrue (\model -> String.length model.password < 7) ( Password, "Password should be 7 characters or more." )
-        , ifBlank .password ( Password, "Please enter a password." )
+        , ifTrue (\model -> String.length model.password < 7) ( Password, Translation.enKo lang "Password should be 7 characters or more." "비밀번호는 7자 이상이어야 합니다." )
+        , ifBlank .password ( Password, Translation.enKo lang "Please enter a password." "비밀번호를 입력해 주세요." )
         ]
 
 
@@ -176,6 +179,9 @@ sendLoginRequest validModel =
 view : Model -> Html Msg
 view model =
     let
+        lang =
+            GlobalData.language model.globalData
+
         formErrors =
             getFieldErrors Form model.errors
 
@@ -190,22 +196,22 @@ view model =
 
         showHidePassword =
             if model.showPassword then
-                div [ id "show-hide-password", onClick ToggleShowPassword ] [ AntIcons.eyeInvisibleOutlined [ Svg.Attributes.class "icon" ], text "Hide" ]
+                div [ id "show-hide-password", onClick ToggleShowPassword ] [ AntIcons.eyeInvisibleOutlined [ Svg.Attributes.class "icon" ], text (Translation.enKo lang "Hide" "숨기기") ]
 
             else
-                div [ id "show-hide-password", onClick ToggleShowPassword ] [ AntIcons.eyeOutlined [ Svg.Attributes.class "icon" ], text "Show" ]
+                div [ id "show-hide-password", onClick ToggleShowPassword ] [ AntIcons.eyeOutlined [ Svg.Attributes.class "icon" ], text (Translation.enKo lang "Show" "보기") ]
     in
     div [ id "form-page" ]
         [ div [ class "page-backdrop" ] []
         , div [ class "page-bg" ] []
         , a [ class "brand", href "{%HOMEPAGE_URL%}" ] [ img [ id "logo", src "gingko-leaf-logo.svg" ] [] ]
         , div [ class "form-header-container" ]
-            [ h1 [ class "headline" ] [ text "Login" ]
-            , p [ class "subtitle" ] [ text "Welcome back!" ]
+            [ h1 [ class "headline" ] [ text (Translation.enKo lang "Login" "로그인") ]
+            , p [ class "subtitle" ] [ text (Translation.enKo lang "Welcome back!" "다시 오신 것을 환영합니다!") ]
             ]
         , div [ class "center-form" ]
             [ form [ onSubmit SubmittedForm ]
-                [ label [ for "email-input" ] [ text "Email" ]
+                [ label [ for "email-input" ] [ text (Translation.enKo lang "Email" "이메일") ]
                 , input
                     [ onInput EnteredEmail
                     , id "email-input"
@@ -216,7 +222,7 @@ view model =
                     ]
                     []
                 , viewIf (not <| List.isEmpty emailErrors) <| div [ class "input-errors" ] [ text (String.join "\n" emailErrors) ]
-                , label [ for "password-input" ] [ text "Password", showHidePassword ]
+                , label [ for "password-input" ] [ text (Translation.enKo lang "Password" "비밀번호"), showHidePassword ]
                 , input
                     [ onInput EnteredPassword
                     , id "password-input"
@@ -237,25 +243,25 @@ view model =
 
                   else
                     text ""
-                , button [ id "login-button", class "cta" ] [ text "Login" ]
-                , div [ id "post-cta-divider" ] [ hr [] [], div [] [ text "or" ], hr [] [] ]
+                , button [ id "login-button", class "cta" ] [ text (Translation.enKo lang "Login" "로그인") ]
+                , div [ id "post-cta-divider" ] [ hr [] [], div [] [ text (Translation.enKo lang "or" "또는") ], hr [] [] ]
                 , span [ class "alt-action" ]
-                    [ text "New to Gingko? "
-                    , a [ href "/signup" ] [ text "Signup" ]
+                    [ text (Translation.enKo lang "New to Gingko? " "Gingko가 처음이신가요? ")
+                    , a [ href "/signup" ] [ text (Translation.enKo lang "Signup" "회원가입") ]
                     , br [] []
                     , br [] []
-                    , a [ class "forgot-password", href "/forgot-password" ] [ text "Forgot your Password?" ]
+                    , a [ class "forgot-password", href "/forgot-password" ] [ text (Translation.enKo lang "Forgot your Password?" "비밀번호를 잊으셨나요?") ]
                     ]
                 , br [] []
                 , if fromLegacy then
                     small [ class "extra-info", class "legacy" ]
-                        [ text "This is "
-                        , strong [] [ text "not connected" ]
-                        , text " to your gingkoapp.com account."
+                        [ text (Translation.enKo lang "This is " "이 계정은 gingkoapp.com 계정과 ")
+                        , strong [] [ text (Translation.enKo lang "not connected" "연결되어 있지 않습니다") ]
+                        , text (Translation.enKo lang " to your gingkoapp.com account." ".")
                         , br [] []
                         , br [] []
-                        , a [ href <| Route.toString Route.Signup ] [ text "Signup here" ]
-                        , text " to get started."
+                        , a [ href <| Route.toString Route.Signup ] [ text (Translation.enKo lang "Signup here" "여기에서 회원가입") ]
+                        , text (Translation.enKo lang " to get started." "하고 시작해 보세요.")
                         ]
 
                   else

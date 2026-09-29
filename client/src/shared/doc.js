@@ -55,7 +55,9 @@ let lastActivesScrolled = null;
 let lastColumnScrolled = null;
 let ticking = false;
 let renaming = false;
-let lang = "en";
+let lang = "ko";
+// Pick the Korean or English version of a user-facing message.
+const t = (en, ko) => (lang === "ko" ? ko : en);
 let tourStepPositionStepNum = false;
 let tourStepPositionRefElementId = "";
 window.elmMessages = [];
@@ -133,8 +135,9 @@ function getFlags() {
     email = sessionData.email;
     sessionData.sidebarOpen = (sessionData.hasOwnProperty('sidebarOpen')) ?  sessionData.sidebarOpen : false;
     sidebarWidth = sessionData.sidebarOpen ? 215 : 40;
-    lang = sessionData.language || "en";
+    lang = sessionData.language || "ko";
   }
+  document.documentElement.lang = lang;
 
   // Dynamic and global session info
   let timestamp = Date.now();
@@ -247,7 +250,7 @@ function initWebSocket () {
           } else {
             console.error('cardsConflict: no cards ' + TREE_ID, { error: data.e })
             const numberUnsynced = await dexie.cards.where('treeId').equals(TREE_ID).and(c => !c.synced).count();
-            const msg = `Error syncing ${numberUnsynced} change${numberUnsynced == 1 ? "" : "s"}. Try refreshing the page.\n\nIf this error persists, please contact support!`;
+            const msg = t(`Error syncing ${numberUnsynced} change${numberUnsynced == 1 ? "" : "s"}. Try refreshing the page.\n\nIf this error persists, please contact support!`, `변경 사항 ${numberUnsynced}개를 동기화하지 못했습니다. 페이지를 새로고침해 주세요.`);
             toElm(msg, 'appMsgs', 'ErrorAlert');
           }
           break
@@ -262,7 +265,7 @@ function initWebSocket () {
           pushErrorCount++;
           if (pushErrorCount >= 4) {
             let numberUnsynced = await dexie.cards.where('treeId').equals(TREE_ID).and(c => !c.synced).count();
-            const msg = `Error syncing ${numberUnsynced} change${numberUnsynced == 1 ? "" : "s"}. Try refreshing the page.\n\nIf this error persists, please contact support!`;
+            const msg = t(`Error syncing ${numberUnsynced} change${numberUnsynced == 1 ? "" : "s"}. Try refreshing the page.\n\nIf this error persists, please contact support!`, `변경 사항 ${numberUnsynced}개를 동기화하지 못했습니다. 페이지를 새로고침해 주세요.`);
             toElm(msg, 'appMsgs', 'ErrorAlert');
           }
           console.log(pushErrorCount)
@@ -360,7 +363,7 @@ function initWebSocket () {
   ws.onerror = (e) => {
     console.error(e);
     if (wsErrorCount == 3 || wsErrorCount == 10 || wsErrorCount >= 20) {
-      let msg = `Error with the current session.\nTry refreshing.\n\nIf it persists, export a JSON backup of recent work, and log out and back in.`
+      let msg = t(`Error with the current session.\nTry refreshing.\n\nIf it persists, export a JSON backup of recent work, and log out and back in.`, `현재 세션에 문제가 발생했습니다.\n페이지를 새로고침해 주세요.\n\n문제가 계속되면 최근 작업을 JSON으로 백업한 뒤 로그아웃했다가 다시 로그인해 주세요.`)
       toElm(msg, 'appMsgs', 'ErrorAlert');
     }
     wsErrorCount++;
@@ -564,7 +567,7 @@ const fromElm = (msg, elmData) => {
     },
 
     RequestDelete: async () => {
-      if (confirm(`Are you sure you want to delete the document '${elmData[1]}'?`)) {
+      if (confirm(t(`Are you sure you want to delete the document '${elmData[1]}'?`, `'${elmData[1]}' 문서를 삭제하시겠습니까?`))) {
         await dexie.trees.update(elmData[0], {deletedAt: Date.now(), synced: false});
       }
     },
@@ -589,12 +592,12 @@ const fromElm = (msg, elmData) => {
       }
 
       if (elmData && Array.isArray(elmData.errors)) {
-        alert("Error saving data!\n\n" + elmData.errors.join("\n----\n"));
+        alert(t("Error saving data!", "데이터를 저장하지 못했습니다!") + "\n\n" + elmData.errors.join("\n----\n"));
         return;
       }
 
       if (!elmData || !elmData.toAdd || !elmData.toMarkSynced || !elmData.toMarkDeleted || !elmData.toRemove) {
-        alert("Error saving data!\nInvalid data sent to DB:\n" + JSON.stringify(elmData));
+        alert(t("Error saving data!\nInvalid data sent to DB:\n", "데이터를 저장하지 못했습니다!\nDB에 잘못된 데이터가 전송되었습니다:\n") + JSON.stringify(elmData));
         return;
       }
 
@@ -637,7 +640,7 @@ const fromElm = (msg, elmData) => {
         }
         await dexie.trees.update(TREE_ID, {updatedAt: timestamp, synced: false});
       } catch (e) {
-        alert("Error saving data!" + e);
+        alert(t("Error saving data!", "데이터를 저장하지 못했습니다! ") + e);
       }
     },
 
@@ -879,6 +882,8 @@ const fromElm = (msg, elmData) => {
       // Save to remote SQLite
       switch (key) {
         case 'language':
+          lang = value;
+          document.documentElement.lang = lang;
           wsSend('setLanguage', value, true);
           break;
 
@@ -1408,7 +1413,7 @@ Mousetrap.bind(helpers.shortcuts, function (e, s) {
           }
         }).catch(err => {
           if (err.message.includes("denied")) {
-            alert("Clipboard access denied. Click on the padlock icon in the address bar and allow clipboard access.")
+            alert(t("Clipboard access denied. Click on the padlock icon in the address bar and allow clipboard access.", "클립보드 접근이 거부되었습니다. 주소 표시줄의 자물쇠 아이콘을 눌러 클립보드 접근을 허용해 주세요."))
           }
         });
       break;
@@ -1465,7 +1470,7 @@ window.addEventListener("error", (err) => {
     ||
     err.message.match(/Failed to execute 'removeChild' on 'Node'/)
   ) {
-    alert("There may be an extension interfering with Gingko Writer.\n\nDisable your extensions and try again, or contact support");
+    alert(t("There may be an extension interfering with Gingko Writer.\n\nDisable your extensions and try again, or contact support", "브라우저 확장 프로그램이 Gingko Writer 동작을 방해하고 있을 수 있습니다.\n\n확장 프로그램을 끄고 다시 시도해 주세요."));
     cleanBodyHelp();
   }
 });

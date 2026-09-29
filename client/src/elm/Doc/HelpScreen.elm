@@ -47,8 +47,6 @@ view lang isMac aiFeatureEnabled msg =
                 (viewShortcuts lang isMac aiFeatureEnabled)
             , div [ class "modal-buttons" ]
                 [ div [ onClick msg.showVideoTutorials ] [ text lang HelpVideos ]
-                , div [ onClick msg.showWidget ] [ text lang FAQAndDocs ]
-                , div [ id "email-support", onClick msg.contactSupport ] [ text lang ContactSupport ]
                 ]
             ]
         ]

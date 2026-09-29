@@ -178,6 +178,7 @@ viewSidebar globalData session msgs currentDocId sortCriteria fileFilter docList
                 , tooltipRequested = msgs.tooltipRequested
                 , tooltipClosed = msgs.tooltipClosed
                 }
+                lang
                 currentDocId
                 sortCriteria
                 contextTarget_
@@ -285,7 +286,7 @@ viewSidebarMenu session lang custId_ msgs accountEmail dropdownState =
                 , ternary (Feature.enabled VotingAppLinkInMenu session)
                     (a [ href ("https://gingkowriter.voxemporium.com#" ++ Utils.voxEmporiumHash (Session.name session)), onClickStopStyled msgs.noOp, A.target "_blank", class "sidebar-menu-item" ]
                         [ div [ class "icon" ] [ Octicons.megaphone Octicons.defaultOptions |> fromUnstyled ]
-                        , text "Vote on Improvements"
+                        , text (Translation.enKo lang "Vote on Improvements" "개선 사항 투표")
                         ]
                     )
                     (text "")

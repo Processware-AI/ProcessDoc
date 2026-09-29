@@ -1,9 +1,10 @@
-module Translation exposing (Language(..), TranslationId(..), activeLanguages, dateFormat, datetimeFormat, langFromString, langToString, languageDecoder, languageName, timeDistInWords, tr)
+module Translation exposing (Language(..), TranslationId(..), activeLanguages, dateFormat, enKo, datetimeFormat, langFromString, langToString, languageDecoder, languageName, timeDistInWords, tr)
 
 import Json.Decode as Json exposing (..)
 import Time
 import Time.Distance as TimeDistance
 import Time.Distance.I18n as I18n
+import Time.Distance.Types as TimeDistanceTypes
 import Time.Format exposing (format)
 import Time.Format.Config.Config_de_de
 import Time.Format.Config.Config_en_us
@@ -383,6 +384,18 @@ activeLanguages =
     , Nb
     ]
         |> List.map (\l -> ( l, languageName l ))
+
+
+{-| Inline English/Korean string, for UI text that is not in the TranslationId
+catalog. Korean users get the Korean text; every other language gets English.
+-}
+enKo : Language -> String -> String -> String
+enKo lang en ko =
+    if lang == Ko then
+        ko
+
+    else
+        en
 
 
 tr : Language -> TranslationId -> String
@@ -6779,6 +6792,9 @@ tr lang trans =
 timeDistInWords : Language -> Time.Posix -> Time.Posix -> String
 timeDistInWords lang t1 t2 =
     case lang of
+        Ko ->
+            TimeDistance.inWordsWithConfig { withAffix = True } timeDistKo t1 t2
+
         En ->
             TimeDistance.inWordsWithConfig { withAffix = True } I18n.en t1 t2
 
@@ -6840,14 +6856,79 @@ timeDistInWords lang t1 t2 =
             TimeDistance.inWordsWithConfig { withAffix = True } I18n.en t1 t2
 
 
+{-| Korean relative time, e.g. "3분 전", "약 2시간 후". -}
+timeDistKo : TimeDistanceTypes.Locale
+timeDistKo { withAffix } tense distanceId =
+    let
+        n =
+            String.fromInt
+
+        affix str =
+            case ( withAffix, tense ) of
+                ( True, TimeDistanceTypes.Past ) ->
+                    str ++ " 전"
+
+                ( True, TimeDistanceTypes.Future ) ->
+                    str ++ " 후"
+
+                ( False, _ ) ->
+                    str
+    in
+    (case distanceId of
+        TimeDistanceTypes.LessThanXSeconds i ->
+            n i ++ "초 미만"
+
+        TimeDistanceTypes.HalfAMinute ->
+            "30초"
+
+        TimeDistanceTypes.LessThanXMinutes i ->
+            n i ++ "분 미만"
+
+        TimeDistanceTypes.XMinutes i ->
+            n i ++ "분"
+
+        TimeDistanceTypes.AboutXHours i ->
+            "약 " ++ n i ++ "시간"
+
+        TimeDistanceTypes.XDays i ->
+            n i ++ "일"
+
+        TimeDistanceTypes.AboutXMonths i ->
+            "약 " ++ n i ++ "개월"
+
+        TimeDistanceTypes.XMonths i ->
+            n i ++ "개월"
+
+        TimeDistanceTypes.AboutXYears i ->
+            "약 " ++ n i ++ "년"
+
+        TimeDistanceTypes.OverXYears i ->
+            n i ++ "년 이상"
+
+        TimeDistanceTypes.AlmostXYears i ->
+            "거의 " ++ n i ++ "년"
+    )
+        |> affix
+
+
 dateFormat : Language -> Time.Posix -> String
 dateFormat lang time =
-    posixToString "%B %-d, %Y" lang time
+    case lang of
+        Ko ->
+            posixToString "%Y년 %-m월 %-d일" lang time
+
+        _ ->
+            posixToString "%B %-d, %Y" lang time
 
 
 datetimeFormat : Language -> Time.Posix -> String
 datetimeFormat lang time =
-    posixToString "%b %-d, %Y, %-I:%M:%S %p" lang time
+    case lang of
+        Ko ->
+            posixToString "%Y년 %-m월 %-d일 %H:%M:%S" lang time
+
+        _ ->
+            posixToString "%b %-d, %Y, %-I:%M:%S %p" lang time
 
 
 posixToString : String -> Language -> Time.Posix -> String

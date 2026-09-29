@@ -533,7 +533,7 @@ update msg model =
                                                     ( newTray
                                                     , delay 0
                                                         (AddToast Temporary
-                                                            (Toast SuccessToast "Sync successful")
+                                                            (Toast SuccessToast (Translation.enKo (GlobalData.language globalData) "Sync successful" "동기화되었습니다."))
                                                         )
                                                     )
                                                )
@@ -1069,7 +1069,7 @@ update msg model =
                                 , Cmd.batch
                                     [ delay 0
                                         (AddToast Temporary
-                                            { message = "Title cannot be blank"
+                                            { message = Translation.enKo (GlobalData.language globalData) "Title cannot be blank" "제목을 비워 둘 수 없습니다."
                                             , role = Info
                                             }
                                         )
@@ -2076,7 +2076,7 @@ toggleHistory shouldOpen delta model =
                         , Cmd.map GotDocMsg newDocCmds
                         ]
                     )
-                        |> setBlock (Just "Cannot edit while viewing history.")
+                        |> setBlock (Just (Translation.enKo (GlobalData.language (toGlobalData model)) "Cannot edit while viewing history." "버전 기록을 보는 중에는 편집할 수 없습니다."))
 
         ( False, _ ) ->
             ( { model | headerMenu = NoHeaderMenu }, Cmd.none ) |> setBlock Nothing
@@ -2243,7 +2243,7 @@ view ({ documentState } as model) =
                             , tooltipRequested = TooltipRequested
                             , tooltipClosed = TooltipClosed
                             }
-                            (Session.getDocName session docId |> Maybe.withDefault "Untitled")
+                            (Session.getDocName session docId |> Maybe.withDefault (Translation.enKo lang "Untitled" "제목 없음"))
                             model.exportSettings
 
                     maybeExportView =
@@ -2255,7 +2255,7 @@ view ({ documentState } as model) =
                                 exportViewOk defaultTree workingTree.tree
 
                             ( ExportPreview, Nothing, _ ) ->
-                                exportViewError "No card selected, cannot preview document"
+                                exportViewError (Translation.enKo lang "No card selected, cannot preview document" "선택된 카드가 없어 문서를 미리 볼 수 없습니다.")
 
                             _ ->
                                 textNoTr ""
@@ -2309,7 +2309,7 @@ view ({ documentState } as model) =
                                 , lastRemoteSave = lastRemoteSave
                                 , globalData = globalData
                                 }
-                           , viewConflictSelector model.conflictViewerState
+                           , viewConflictSelector lang model.conflictViewerState
                            , maybeExportView
                            , viewSidebar globalData
                                 session
@@ -2354,7 +2354,7 @@ view ({ documentState } as model) =
 
             else
                 div [ id "app-root", classList [ ( "loading", model.loading ) ] ]
-                    (Page.DocMessage.viewEmpty { newClicked = TemplateSelectorOpened, emptyMessage = EmptyMessage }
+                    (Page.DocMessage.viewEmptyIn lang { newClicked = TemplateSelectorOpened, emptyMessage = EmptyMessage }
                         ++ [ viewSidebar globalData
                                 session
                                 sidebarMsgs
@@ -2374,7 +2374,7 @@ view ({ documentState } as model) =
 
         DocNotFound globalData _ ->
             div [ id "app-root" ]
-                (Page.DocMessage.viewNotFound ClickedEmailSupport
+                (Page.DocMessage.viewNotFoundIn lang ClickedEmailSupport
                     ++ [ viewSidebar globalData
                             session
                             sidebarMsgs
@@ -2416,7 +2416,7 @@ viewModal globalData session modalState =
                 []
 
         FileSwitcher switcherModel ->
-            Doc.Switcher.view SwitcherClosed FileSearchChanged switcherModel
+            Doc.Switcher.view language SwitcherClosed FileSearchChanged switcherModel
 
         CollabModal collabModel ->
             UI.Collaborators.Modal.view
@@ -2426,32 +2426,32 @@ viewModal globalData session modalState =
                 }
                 language
                 collabModel
-                |> SharedUI.modalWrapper ModalClosed (Just "collab-modal") Nothing "Collaborators"
+                |> SharedUI.modalWrapper ModalClosed (Just "collab-modal") Nothing (Translation.enKo language "Collaborators" "공동 작업자")
 
         AIPrompt isWaiting _ ->
-            [ UI.viewAIPrompt ctrlOrCmd isWaiting AIPromptFieldChanged ]
+            [ UI.viewAIPrompt language ctrlOrCmd isWaiting AIPromptFieldChanged ]
 
         MigrateModal ->
-            [ div [ class "top" ] [ h2 [] [ textNoTr "We've made major improvements to how documents are stored.", br [] [], textNoTr "Upgrade this document to make it :" ] ]
+            [ div [ class "top" ] [ h2 [] [ textNoTr (Translation.enKo language "We've made major improvements to how documents are stored." "문서 저장 방식이 크게 개선되었습니다."), br [] [], textNoTr (Translation.enKo language "Upgrade this document to make it :" "이 문서를 업그레이드하면 다음과 같이 달라집니다:") ] ]
             , div [ class "left" ]
-                [ h3 [ style "text-align" "center" ] [ textNoTr "More Reliable" ]
+                [ h3 [ style "text-align" "center" ] [ textNoTr (Translation.enKo language "More Reliable" "더 안정적") ]
                 , ul []
-                    [ li [] [ textNoTr "3 on-device backups, updated as you type" ]
-                    , li [] [ textNoTr "2 server backups up to once per second" ]
-                    , li [] [ textNoTr "Simpler data, in a more resilient database" ]
+                    [ li [] [ textNoTr (Translation.enKo language "3 on-device backups, updated as you type" "입력하는 즉시 갱신되는 기기 내 백업 3개") ]
+                    , li [] [ textNoTr (Translation.enKo language "2 server backups up to once per second" "최대 초당 1회 갱신되는 서버 백업 2개") ]
+                    , li [] [ textNoTr (Translation.enKo language "Simpler data, in a more resilient database" "더 견고한 데이터베이스에 저장되는 단순한 데이터") ]
                     ]
                 ]
             , div [ class "right" ]
-                [ h3 [ style "text-align" "center" ] [ textNoTr "Faster" ]
+                [ h3 [ style "text-align" "center" ] [ textNoTr (Translation.enKo language "Faster" "더 빠름") ]
                 , ul []
-                    [ li [] [ textNoTr "35x faster syncing" ]
-                    , li [] [ textNoTr "25x less network data sent/received" ]
-                    , li [] [ textNoTr "100x faster loading of large documents" ]
+                    [ li [] [ textNoTr (Translation.enKo language "35x faster syncing" "35배 빠른 동기화") ]
+                    , li [] [ textNoTr (Translation.enKo language "25x less network data sent/received" "네트워크 데이터 송수신량 25배 감소") ]
+                    , li [] [ textNoTr (Translation.enKo language "100x faster loading of large documents" "대용량 문서 로딩 100배 향상") ]
                     ]
                 ]
             , div [ classList [ ( "bottom", True ), ( "modal-buttons", True ) ] ]
-                [ div [ id "migrate-confirm", onClick MigrateToCardBased ] [ textNoTr "Upgrade Document" ]
-                , p [ style "position" "absolute", style "bottom" "16px", style "color" "grey" ] [ small [] [ textNoTr "(Note: this downloads a backup of the current document before upgrading it)" ] ]
+                [ div [ id "migrate-confirm", onClick MigrateToCardBased ] [ textNoTr (Translation.enKo language "Upgrade Document" "문서 업그레이드") ]
+                , p [ style "position" "absolute", style "bottom" "16px", style "color" "grey" ] [ small [] [ textNoTr (Translation.enKo language "(Note: this downloads a backup of the current document before upgrading it)" "(참고: 업그레이드 전에 현재 문서의 백업이 다운로드됩니다.)") ] ]
                 ]
             ]
                 |> SharedUI.modalWrapper ModalClosed (Just "migrate-modal") Nothing "\u{200E}"
@@ -2524,7 +2524,7 @@ viewModal globalData session modalState =
                 |> List.map (Html.map ImportModalMsg)
 
         ImportTextModal modalModel ->
-            ImportText.view
+            ImportText.view language
                 { closeMsg = TemplateSelectorOpened, tagger = ImportTextModalMsg }
                 modalModel
 
@@ -2546,8 +2546,8 @@ viewModal globalData session modalState =
                 |> List.map (Html.map UpgradeModalMsg)
 
 
-viewConflictSelector : ConflictViewerState -> Html Msg
-viewConflictSelector cstate =
+viewConflictSelector : Language -> ConflictViewerState -> Html Msg
+viewConflictSelector lang cstate =
     case cstate of
         NoConflict ->
             emptyText
@@ -2561,17 +2561,17 @@ viewConflictSelector cstate =
                     , style "padding" "10px"
                     , style "border-radius" "5px"
                     ]
-                    [ textNoTr "Conflicts detected. Choose a version to resolve the conflict."
+                    [ textNoTr (Translation.enKo lang "Conflicts detected. Choose a version to resolve the conflict." "충돌이 감지되었습니다. 충돌을 해결할 버전을 선택하십시오.")
                     , fieldset [ style "border" "none", style "display" "flex", style "flex-direction" "column" ]
-                        [ radio "Local" (confSel == Ours) (ConflictVersionSelected Ours)
-                        , radio "Cloud" (confSel == Theirs) (ConflictVersionSelected Theirs)
-                        , radio "Original" (confSel == Original) (ConflictVersionSelected Original)
+                        [ radio (Translation.enKo lang "Local" "로컬") (confSel == Ours) (ConflictVersionSelected Ours)
+                        , radio (Translation.enKo lang "Cloud" "클라우드") (confSel == Theirs) (ConflictVersionSelected Theirs)
+                        , radio (Translation.enKo lang "Original" "원본") (confSel == Original) (ConflictVersionSelected Original)
                         ]
                     , button
                         [ class "mt-4 bg-gray-200 text-black px-2 py-0.5 rounded"
                         , onClick ConflictResolved
                         ]
-                        [ textNoTr "Choose this Version" ]
+                        [ textNoTr (Translation.enKo lang "Choose this Version" "이 버전 선택") ]
                     ]
                 ]
 

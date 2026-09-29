@@ -10,7 +10,7 @@ import Page.Doc.ContextMenu as ContextMenu
 import Route
 import Svg.Attributes as SA
 import Time
-import Translation exposing (TranslationId(..), timeDistInWords, tr)
+import Translation exposing (Language, TranslationId(..), timeDistInWords, tr)
 import Types exposing (SortBy(..), TooltipPosition(..))
 import Utils exposing (onClickStop)
 
@@ -158,13 +158,14 @@ viewSidebarList :
     , tooltipRequested : String -> TooltipPosition -> TranslationId -> msg
     , tooltipClosed : msg
     }
+    -> Language
     -> String
     -> SortBy
     -> Maybe String
     -> String
     -> Model
     -> Html msg
-viewSidebarList msgs currentDocId sortCriteria contextTarget_ filterField model =
+viewSidebarList msgs lang currentDocId sortCriteria contextTarget_ filterField model =
     let
         stopClickProp =
             stopPropagationOn "click" (Dec.succeed ( msgs.noOp, True ))
@@ -188,7 +189,7 @@ viewSidebarList msgs currentDocId sortCriteria contextTarget_ filterField model 
                     , stopClickProp
                     , attribute "data-private" "lipsum"
                     ]
-                    [ Metadata.getDocName d |> Maybe.withDefault "Untitled" |> text ]
+                    [ Metadata.getDocName d |> Maybe.withDefault (Translation.enKo lang "Untitled" "제목 없음") |> text ]
                 , if not <| List.isEmpty (Metadata.getCollaborators d) then
                     AntIcons.shareAltOutlined
                         [ SA.class "absolute"
@@ -238,18 +239,18 @@ viewSidebarList msgs currentDocId sortCriteria contextTarget_ filterField model 
                         ]
                         [ AntIcons.fileOutlined [ SA.class "sort-icon" ] ]
                     ]
-                , input [ id "document-list-filter", placeholder "Find file by name", type_ "search", onInput msgs.filter, stopClickProp ] []
+                , input [ id "document-list-filter", placeholder (Translation.enKo lang "Find file by name" "이름으로 파일 찾기"), type_ "search", onInput msgs.filter, stopClickProp ] []
                 , div [ id "sidebar-document-list" ]
                     (if not <| List.isEmpty filteredDocs then
                         List.map viewDocItem (sortBy sortCriteria filteredDocs)
 
                      else
-                        [ div [ id "no-documents" ] [ text "No Documents Found" ] ]
+                        [ div [ id "no-documents" ] [ text (Translation.enKo lang "No Documents Found" "문서가 없습니다") ] ]
                     )
                 ]
 
         Failure _ ->
-            text "Failed to load documents list."
+            text (Translation.enKo lang "Failed to load documents list." "문서 목록을 불러오지 못했습니다.")
 
 
 type alias SwitcherModel =
@@ -258,8 +259,8 @@ type alias SwitcherModel =
     }
 
 
-viewSwitcher : Metadata -> SwitcherModel -> Html msg
-viewSwitcher currentDocument model =
+viewSwitcher : Language -> Metadata -> SwitcherModel -> Html msg
+viewSwitcher lang currentDocument model =
     let
         viewDocItem d =
             div
@@ -270,18 +271,18 @@ viewSwitcher currentDocument model =
                     ]
                 ]
                 [ a [ href <| Route.toString (Route.DocUntitled (Metadata.getDocId d)), attribute "data-private" "lipsum" ]
-                    [ Metadata.getDocName d |> Maybe.withDefault "Untitled" |> text ]
+                    [ Metadata.getDocName d |> Maybe.withDefault (Translation.enKo lang "Untitled" "제목 없음") |> text ]
                 ]
     in
     case model.docList of
         Loading ->
-            text "Loading..."
+            text (Translation.enKo lang "Loading..." "불러오는 중...")
 
         Success docs ->
             div [ class "switcher-document-list" ] (List.map viewDocItem docs)
 
         Failure _ ->
-            text "Failed to load documents list."
+            text (Translation.enKo lang "Failed to load documents list." "문서 목록을 불러오지 못했습니다.")
 
 
 

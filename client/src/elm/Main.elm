@@ -23,6 +23,7 @@ import Page.Signup
 import Public
 import Route
 import Session exposing (LoggedIn, Session(..))
+import Translation
 import Url exposing (Url)
 
 
@@ -391,7 +392,7 @@ update msg model =
                                 else
                                     "Ctrl+Enter"
                         in
-                        ( model, send <| Alert ("You have unsaved changes!\n" ++ saveShortcut ++ " to save.") )
+                        ( model, send <| Alert (Translation.enKo (GlobalData.language globalData) "You have unsaved changes!\n" "저장하지 않은 변경 사항이 있습니다!\n" ++ saveShortcut ++ Translation.enKo (GlobalData.language globalData) " to save." " 키를 눌러 저장해 주세요.") )
 
                     else
                         ( model, Nav.pushUrl navKey (Url.toString url) )
@@ -482,30 +483,34 @@ updateWith toModel toMsg ( subModel, subCmd ) =
 
 view : Model -> Document Msg
 view model =
+    let
+        lang =
+            GlobalData.language (toGlobalData model)
+    in
     case model of
         PaymentSuccess _ ->
-            Page.Message.viewSuccess
+            Page.Message.viewSuccess lang
 
         Signup signup ->
-            { title = "Gingko Writer - Signup", body = [ Html.map GotSignupMsg (Page.Signup.view signup) ] }
+            { title = Translation.enKo lang "Gingko Writer - Signup" "Gingko Writer - 회원가입", body = [ Html.map GotSignupMsg (Page.Signup.view signup) ] }
 
         Login login ->
-            { title = "Gingko Writer - Login", body = [ Html.map GotLoginMsg (Page.Login.view login) ] }
+            { title = Translation.enKo lang "Gingko Writer - Login" "Gingko Writer - 로그인", body = [ Html.map GotLoginMsg (Page.Login.view login) ] }
 
         ForgotPassword forgotPass ->
-            { title = "Gingko - Forgot Password", body = [ Html.map GotForgotPasswordMsg (Page.ForgotPassword.view forgotPass) ] }
+            { title = Translation.enKo lang "Gingko - Forgot Password" "Gingko - 비밀번호 찾기", body = [ Html.map GotForgotPasswordMsg (Page.ForgotPassword.view forgotPass) ] }
 
         ResetPassword resetPass ->
-            { title = "Gingko - Reset Password", body = [ Html.map GotResetPasswordMsg (Page.ResetPassword.view resetPass) ] }
+            { title = Translation.enKo lang "Gingko - Reset Password" "Gingko - 비밀번호 재설정", body = [ Html.map GotResetPasswordMsg (Page.ResetPassword.view resetPass) ] }
 
         Copy copyModel ->
-            { title = "Duplicating...", body = [ UI.viewAppLoadingSpinner (Session.fileMenuOpen copyModel.session) ] }
+            { title = Translation.enKo lang "Duplicating..." "복제 중...", body = [ UI.viewAppLoadingSpinner (Session.fileMenuOpen copyModel.session) ] }
 
         Import importModel ->
-            { title = "Importing...", body = [ UI.viewAppLoadingSpinner (Session.fileMenuOpen importModel.session) ] }
+            { title = Translation.enKo lang "Importing..." "가져오는 중...", body = [ UI.viewAppLoadingSpinner (Session.fileMenuOpen importModel.session) ] }
 
         DocNew _ ->
-            { title = "Gingko Writer - New", body = [ Html.div [] [ Html.text "LOADING..." ] ] }
+            { title = Translation.enKo lang "Gingko Writer - New" "Gingko Writer - 새 문서", body = [ Html.div [] [ Html.text (Translation.enKo lang "LOADING..." "로딩 중...") ] ] }
 
         App app ->
             let

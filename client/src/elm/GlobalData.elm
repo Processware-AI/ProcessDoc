@@ -54,7 +54,7 @@ decoder =
         )
         |> required "seed" (Dec.int |> Dec.map Random.initialSeed)
         |> required "currentTime" (Dec.int |> Dec.map Time.millisToPosix)
-        |> optional "language" (Dec.string |> Dec.map langFromString) En
+        |> optional "language" (Dec.string |> Dec.map langFromString) Ko
         |> required "isMac" Dec.bool
 
 

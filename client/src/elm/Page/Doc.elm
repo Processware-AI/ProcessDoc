@@ -100,7 +100,7 @@ publicTreeLoaded newTree (Model model) =
         { model
             | workingTree = TreeStructure.setTree newTree model.workingTree
             , loading = False
-            , block = Just "Cannot edit or add cards to a public document."
+            , block = Just (Translation.enKo (GlobalData.language model.globalData) "Cannot edit or add cards to a public document." "공개 문서에서는 카드를 편집하거나 추가할 수 없습니다.")
         }
 
 
@@ -1378,7 +1378,7 @@ toggleEditing model =
             if isLocked then
                 ( model
                 , Cmd.none
-                , ParentAddToast Temporary (Toast Warning "Card is being edited by someone else.") :: []
+                , ParentAddToast Temporary (Toast Warning (Translation.enKo (GlobalData.language model.globalData) "Card is being edited by someone else." "다른 사용자가 이 카드를 편집하고 있습니다.")) :: []
                 )
                     |> preventIfBlocked model
 
@@ -1477,7 +1477,7 @@ openCard id str model =
     if isLocked then
         ( model
         , Cmd.none
-        , ParentAddToast Temporary (Toast Warning "Card is being edited by someone else.") :: []
+        , ParentAddToast Temporary (Toast Warning (Translation.enKo (GlobalData.language model.globalData) "Card is being edited by someone else." "다른 사용자가 이 카드를 편집하고 있습니다.")) :: []
         )
             |> preventIfBlocked model
 
@@ -1534,14 +1534,14 @@ deleteCard id ( model, prevCmd, prevMsgsToParent ) =
     if isLocked then
         ( model
         , prevCmd
-        , ParentAddToast Temporary (Toast Warning "Card is being edited by someone else.") :: prevMsgsToParent
+        , ParentAddToast Temporary (Toast Warning (Translation.enKo (GlobalData.language model.globalData) "Card is being edited by someone else." "다른 사용자가 이 카드를 편집하고 있습니다.")) :: prevMsgsToParent
         )
             |> preventIfBlocked model
 
     else if isLastChild then
         ( model
         , prevCmd
-        , ParentAddToast Temporary (Toast Warning "Cannot delete last card.") :: prevMsgsToParent
+        , ParentAddToast Temporary (Toast Warning (Translation.enKo (GlobalData.language model.globalData) "Cannot delete last card." "마지막 카드는 삭제할 수 없습니다.")) :: prevMsgsToParent
         )
             |> preventIfBlocked model
 
@@ -1971,7 +1971,7 @@ cut id ( model, prevCmd, prevMsgsToParent ) =
     if isLastChild then
         ( model
         , prevCmd
-        , ParentAddToast Temporary (Toast Warning "Cannot cut last card") :: prevMsgsToParent
+        , ParentAddToast Temporary (Toast Warning (Translation.enKo (GlobalData.language model.globalData) "Cannot cut last card" "마지막 카드는 잘라낼 수 없습니다.")) :: prevMsgsToParent
         )
 
     else
@@ -2125,7 +2125,7 @@ viewLoaded ({ docMsg } as appMsg) model =
                         |> String.trim
                         |> (\str ->
                                 if String.isEmpty str then
-                                    "(empty)"
+                                    Translation.enKo (GlobalData.language model.globalData) "(empty)" "(비어 있음)"
 
                                 else
                                     str
@@ -2133,7 +2133,7 @@ viewLoaded ({ docMsg } as appMsg) model =
                     )
 
                 [] ->
-                    ( id, "(empty)" )
+                    ( id, Translation.enKo (GlobalData.language model.globalData) "(empty)" "(비어 있음)" )
 
         cardTitles =
             case activeTree_ of
@@ -2156,9 +2156,9 @@ viewLoaded ({ docMsg } as appMsg) model =
         text ""
     , if model.cardsCollapsed then
         div [ id "collapsed-banner" ]
-            [ text "Collapsed Mode  -  "
+            [ text (Translation.enKo (GlobalData.language model.globalData) "Collapsed Mode  -  " "접힌 모드  -  ")
             , span [ class "shortcut-key", style "margin-top" "unset", style "margin-left" "3px" ] [ text "z" ]
-            , text " to toggle"
+            , text (Translation.enKo (GlobalData.language model.globalData) " to toggle" " 키로 전환")
             ]
 
       else
@@ -2350,10 +2350,10 @@ viewGroup vstate xs =
             else
                 ( t.id
                 , lazy8 viewCardOther
+                    vstate.language
                     t.id
                     t.content
                     collabsOnCard
-                    isEditing
                     (hasChildren t)
                     isAncestor
                     isLast
@@ -2381,9 +2381,13 @@ viewGroup vstate xs =
         )
 
 
-viewCardOther : String -> String -> List Collaborator -> Bool -> Bool -> Bool -> Bool -> ( DragDrop.Model String DropId, DragExternalModel ) -> Html Msg
-viewCardOther cardId content collabsOnCard isEditing isParent isAncestor isLast dragModels =
+viewCardOther : Language -> String -> String -> List Collaborator -> Bool -> Bool -> Bool -> ( DragDrop.Model String DropId, DragExternalModel ) -> Html Msg
+viewCardOther lang cardId content collabsOnCard isParent isAncestor isLast dragModels =
     let
+        -- viewCardOther is only used for cards that are not being edited
+        isEditing =
+            False
+
         collabsEditingCard =
             collabsOnCard |> List.filter (\c -> c.mode == CollabEditing cardId)
     in
@@ -2399,7 +2403,7 @@ viewCardOther cardId content collabsOnCard isEditing isParent isAncestor isLast 
             ]
         ]
         ((if not isEditing then
-            [ div ([ class "drag-region", title "Drag to move" ] ++ DragDrop.draggable DragDropMsg cardId) [ div [ class "handle" ] [] ] ]
+            [ div ([ class "drag-region", title (Translation.enKo lang "Drag to move" "드래그하여 이동") ] ++ DragDrop.draggable DragDropMsg cardId) [ div [ class "handle" ] [] ] ]
 
           else
             []
@@ -2474,7 +2478,7 @@ viewCardActive lang cardId content isParent isLast collabsOnCard dragModels =
             , ( "has-children", isParent )
             ]
         ]
-        ([ div ([ class "drag-region", title "Drag to move" ] ++ DragDrop.draggable DragDropMsg cardId) [ div [ class "handle" ] [] ] ]
+        ([ div ([ class "drag-region", title (Translation.enKo lang "Drag to move" "드래그하여 이동") ] ++ DragDrop.draggable DragDropMsg cardId) [ div [ class "handle" ] [] ] ]
             ++ buttons
             ++ dropRegions cardId False isLast dragModels
             ++ [ div
@@ -2516,7 +2520,7 @@ viewCardEditing lang cardId content isParent _ =
         , div [ class "flex-column card-right-overlay" ]
             [ div
                 [ class "fullscreen-card-btn"
-                , title "Edit in Fullscreen"
+                , title (Translation.enKo lang "Edit in Fullscreen" "전체 화면에서 편집")
                 , onClick EditToFullscreenMode
                 ]
                 [ AntIcons.fullscreenOutlined [ Attributes.width 16, Attributes.height 16 ] ]

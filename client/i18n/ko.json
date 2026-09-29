@@ -1,7 +1,7 @@
 [
     {
         "term": "Cancel",
-        "definition": "\ucde8\uc18c",
+        "definition": "취소",
         "context": "",
         "term_plural": "",
         "reference": "Elm:Cancel",
@@ -9,7 +9,7 @@
     },
     {
         "term": "Recent Documents",
-        "definition": "\ucd5c\uadfc \ubb38\uc11c\ub4e4",
+        "definition": "최근 문서",
         "context": "",
         "term_plural": "",
         "reference": "Elm:RecentDocuments",
@@ -17,7 +17,7 @@
     },
     {
         "term": "Last Opened",
-        "definition": "\ub9c8\uc9c0\ub9c9\uc73c\ub85c \uc5f0 \ubb38\uc11c",
+        "definition": "마지막으로 연 날짜",
         "context": "",
         "term_plural": "",
         "reference": "Elm:LastOpened",
@@ -25,7 +25,7 @@
     },
     {
         "term": "Open Other Documents",
-        "definition": "\ub2e4\ub978 \ubb38\uc11c \uc5f4\uae30",
+        "definition": "다른 문서 열기",
         "context": "",
         "term_plural": "",
         "reference": "Elm:OpenOtherDocuments",
@@ -33,7 +33,7 @@
     },
     {
         "term": "Remove From List",
-        "definition": "\ub9ac\uc2a4\ud2b8\uc5d0\uc11c \uc9c0\uc6b0\uae30",
+        "definition": "목록에서 제거",
         "context": "",
         "term_plural": "",
         "reference": "Elm:RemoveFromList",
@@ -41,7 +41,7 @@
     },
     {
         "term": "New Document...",
-        "definition": "\uc0c8 \ubb38\uc11c...",
+        "definition": "새 문서...",
         "context": "",
         "term_plural": "",
         "reference": "Elm:NeverSaved",
@@ -49,7 +49,7 @@
     },
     {
         "term": "Unsaved Changes...",
-        "definition": "\uc800\uc7a5\ub418\uc9c0 \uc54a\uc740 \uc218\uc815\uc0ac\ud56d...",
+        "definition": "저장되지 않은 변경 사항...",
         "context": "",
         "term_plural": "",
         "reference": "Elm:UnsavedChanges",
@@ -57,7 +57,7 @@
     },
     {
         "term": "Database Error...",
-        "definition": "\ub370\uc774\ud130\ubca0\uc774\uc2a4 \uc5d0\ub7ec...",
+        "definition": "데이터베이스 오류...",
         "context": "",
         "term_plural": "",
         "reference": "Elm:DatabaseError",
@@ -65,7 +65,7 @@
     },
     {
         "term": "Last saved",
-        "definition": "\ucd5c\uadfc \uc800\uc7a5",
+        "definition": "마지막 저장",
         "context": "",
         "term_plural": "",
         "reference": "Elm:LastSaved",
@@ -73,7 +73,7 @@
     },
     {
         "term": "Last edit",
-        "definition": "\ucd5c\uadfc \uc218\uc815",
+        "definition": "마지막 편집",
         "context": "",
         "term_plural": "",
         "reference": "Elm:LastEdit",
@@ -81,7 +81,7 @@
     },
     {
         "term": "Keyboard Shortcuts Help",
-        "definition": "\ub2e8\ucd95\ud0a4 \ubcf4\uae30",
+        "definition": "단축키 도움말",
         "context": "",
         "term_plural": "",
         "reference": "Elm:KeyboardHelp",
@@ -89,7 +89,7 @@
     },
     {
         "term": "Restore this Version",
-        "definition": "\uc774 \ubc84\uc804\uc73c\ub85c \ubcf5\uad6c",
+        "definition": "이 버전으로 복원",
         "context": "",
         "term_plural": "",
         "reference": "Elm:RestoreThisVersion",
@@ -97,7 +97,7 @@
     },
     {
         "term": "Enter",
-        "definition": "\uc5d4\ud130",
+        "definition": "Enter",
         "context": "",
         "term_plural": "",
         "reference": "Elm:EnterKey",
@@ -105,7 +105,7 @@
     },
     {
         "term": "to Edit",
-        "definition": "\uc218\uc815",
+        "definition": "편집",
         "context": "",
         "term_plural": "",
         "reference": "Elm:EnterAction",
@@ -113,7 +113,7 @@
     },
     {
         "term": "Edit Card (Enter)",
-        "definition": "\uce74\ub4dc \uc218\uc815 (\uc5d4\ud130)",
+        "definition": "카드 편집 (Enter)",
         "context": "",
         "term_plural": "",
         "reference": "Elm:EditCardTitle",
@@ -121,7 +121,7 @@
     },
     {
         "term": "to Navigate",
-        "definition": "\uc774\ub3d9",
+        "definition": "탐색",
         "context": "",
         "term_plural": "",
         "reference": "Elm:ArrowsAction",
@@ -129,7 +129,7 @@
     },
     {
         "term": "to Add Child",
-        "definition": "\uc11c\ube0c \ucd94\uac00",
+        "definition": "하위 카드 추가",
         "context": "",
         "term_plural": "",
         "reference": "Elm:AddChildAction",
@@ -137,7 +137,7 @@
     },
     {
         "term": "to Split Card to the Right",
-        "definition": "\ubd84\ud560 \ud6c4 \uc624\ub978\ucabd\uc5d0 \ucc44\uc6c0",
+        "definition": "오른쪽으로 분할",
         "context": "",
         "term_plural": "",
         "reference": "Elm:SplitChildAction",
@@ -145,7 +145,7 @@
     },
     {
         "term": "Insert Child (Ctrl+L)",
-        "definition": "\uc11c\ube0c \ucd94\uac00 (Ctrl+L)",
+        "definition": "하위 카드 삽입 (Ctrl+L)",
         "context": "",
         "term_plural": "",
         "reference": "Elm:InsertChildTitle",
@@ -153,7 +153,7 @@
     },
     {
         "term": "to Add Below",
-        "definition": "\uc544\ub798 \ucd94\uac00",
+        "definition": "아래에 추가",
         "context": "",
         "term_plural": "",
         "reference": "Elm:AddBelowAction",
@@ -161,7 +161,7 @@
     },
     {
         "term": "to Split Card Down",
-        "definition": "\uce74\ub4dc\ub97c \uc544\ub798\ub85c \ubd84\ud560\ud558\ub824\uba74",
+        "definition": "아래로 분할",
         "context": "",
         "term_plural": "",
         "reference": "Elm:SplitBelowAction",
@@ -169,7 +169,7 @@
     },
     {
         "term": "to Merge into Next",
-        "definition": "\ub2e4\uc74c\uc73c\ub85c \ubcd1\ud569\ud558\ub824\uba74",
+        "definition": "다음 카드와 병합",
         "context": "",
         "term_plural": "",
         "reference": "Elm:MergeDownAction",
@@ -177,7 +177,7 @@
     },
     {
         "term": "Insert Below (Ctrl+J)",
-        "definition": "\uc544\ub798\uc5d0 \uc0bd\uc785(Ctrl+J)",
+        "definition": "아래에 삽입 (Ctrl+J)",
         "context": "",
         "term_plural": "",
         "reference": "Elm:InsertBelowTitle",
@@ -185,7 +185,7 @@
     },
     {
         "term": "to Add Above",
-        "definition": "\uc704\uc5d0 \ucd94\uac00\ud558\ub824\uba74",
+        "definition": "위에 추가",
         "context": "",
         "term_plural": "",
         "reference": "Elm:AddAboveAction",
@@ -193,7 +193,7 @@
     },
     {
         "term": "to Split Card Upward",
-        "definition": "\uce74\ub4dc\ub97c \uc704\ucabd\uc73c\ub85c \ubd84\ud560\ud558\ub824\uba74",
+        "definition": "위로 분할",
         "context": "",
         "term_plural": "",
         "reference": "Elm:SplitUpwardAction",
@@ -201,7 +201,7 @@
     },
     {
         "term": "to Merge into Previous",
-        "definition": "\uc774\uc804\uc73c\ub85c \ubcd1\ud569\ud558\ub824\uba74",
+        "definition": "이전 카드와 병합",
         "context": "",
         "term_plural": "",
         "reference": "Elm:MergeUpAction",
@@ -209,7 +209,7 @@
     },
     {
         "term": "Insert Above (Ctrl+K)",
-        "definition": "\uc704\uc5d0 \uc0bd\uc785(Ctrl+K)",
+        "definition": "위에 삽입 (Ctrl+K)",
         "context": "",
         "term_plural": "",
         "reference": "Elm:InsertAboveTitle",
@@ -217,7 +217,7 @@
     },
     {
         "term": "(arrows)",
-        "definition": "(\ud654\uc0b4\ud45c)",
+        "definition": "(화살표)",
         "context": "",
         "term_plural": "",
         "reference": "Elm:ArrowKeys",
@@ -225,7 +225,7 @@
     },
     {
         "term": "to Move",
-        "definition": "\uc774\ub3d9",
+        "definition": "이동",
         "context": "",
         "term_plural": "",
         "reference": "Elm:MoveAction",
@@ -233,7 +233,7 @@
     },
     {
         "term": "Backspace",
-        "definition": "\uc5ed\ud589 \ud0a4\uc774",
+        "definition": "Backspace",
         "context": "",
         "term_plural": "",
         "reference": "Elm:Backspace",
@@ -241,7 +241,7 @@
     },
     {
         "term": "to Delete",
-        "definition": "\uc9c0\uc6b0\ub294 \uac83",
+        "definition": "삭제",
         "context": "",
         "term_plural": "",
         "reference": "Elm:DeleteAction",
@@ -249,7 +249,7 @@
     },
     {
         "term": "Delete Card (Ctrl+Backspace)",
-        "definition": "\uce74\ub4dc \uc0ad\uc81c(Ctrl+\ubc31\uc2a4\ud398\uc774\uc2a4)",
+        "definition": "카드 삭제 (Ctrl+Backspace)",
         "context": "",
         "term_plural": "",
         "reference": "Elm:DeleteCardTitle",
@@ -257,7 +257,7 @@
     },
     {
         "term": "for Bold",
-        "definition": "\ubcfc\ub4dc\uccb4\uc6a9",
+        "definition": "굵게",
         "context": "",
         "term_plural": "",
         "reference": "Elm:ForBold",
@@ -265,7 +265,7 @@
     },
     {
         "term": "for Italic",
-        "definition": "\uae30\uc6b8\uc784\uaf34\uc758 \uacbd\uc6b0",
+        "definition": "기울임꼴",
         "context": "",
         "term_plural": "",
         "reference": "Elm:ForItalic",
@@ -273,7 +273,7 @@
     },
     {
         "term": "to Save Changes",
-        "definition": "\ubcc0\uacbd \uc0ac\ud56d\uc744 \uc800\uc7a5\ud558\ub824\uba74",
+        "definition": "변경 사항 저장",
         "context": "",
         "term_plural": "",
         "reference": "Elm:ToSaveChanges",
@@ -281,7 +281,7 @@
     },
     {
         "term": "Save Changes (Ctrl+Enter)",
-        "definition": "\ubcc0\uacbd \uc0ac\ud56d \uc800\uc7a5(Ctrl+Enter)",
+        "definition": "변경 사항 저장 (Ctrl+Enter)",
         "context": "",
         "term_plural": "",
         "reference": "Elm:SaveChangesTitle",
@@ -297,15 +297,15 @@
     },
     {
         "term": "to Cancel Changes",
-        "definition": "\ubcc0\uacbd \uc0ac\ud56d\uc744 \ucde8\uc18c\ud558\ub824\uba74",
+        "definition": "변경 사항 취소",
         "context": "",
         "term_plural": "",
         "reference": "Elm:ToCancelChanges",
         "comment": ""
     },
     {
-        "term": "Press '\/' to search",
-        "definition": "\uac80\uc0c9\ud558\ub824\uba74 '\/'\ub97c \ub204\ub974\uc138\uc694.",
+        "term": "Press '/' to search",
+        "definition": "'/' 키를 눌러 검색",
         "context": "",
         "term_plural": "",
         "reference": "Elm:PressToSearch",
@@ -313,7 +313,7 @@
     },
     {
         "term": "Heading Font",
-        "definition": "\uc81c\ubaa9 \uae00\uaf34",
+        "definition": "제목 글꼴",
         "context": "",
         "term_plural": "",
         "reference": "Elm:HeadingFont",
@@ -321,15 +321,15 @@
     },
     {
         "term": "Content Font",
-        "definition": "\ucf58\ud150\uce20 \uae00\uaf34",
+        "definition": "본문 글꼴",
         "context": "",
         "term_plural": "",
         "reference": "Elm:ContentFont",
         "comment": ""
     },
     {
-        "term": "Editing\/Monospace Font",
-        "definition": "\ud3b8\uc9d1\/\uace0\ud3ed \uae00\uaf34",
+        "term": "Editing/Monospace Font",
+        "definition": "편집/고정폭 글꼴",
         "context": "",
         "term_plural": "",
         "reference": "Elm:EditingFont",
@@ -338,7 +338,8 @@
     {
         "term": "Session : %1 word",
         "definition": {
-            "other": "\uc138\uc158: %1\ub2e8\uc5b4"
+            "one": "세션: %1단어",
+            "other": "세션: %1단어"
         },
         "context": "",
         "term_plural": "Session : %1 words",
@@ -348,7 +349,8 @@
     {
         "term": "Total : %1 word",
         "definition": {
-            "other": "\uc804\uccb4: %1\ub2e8\uc5b4"
+            "one": "전체: %1단어",
+            "other": "전체: %1단어"
         },
         "context": "",
         "term_plural": "Total : %1 words",
@@ -358,7 +360,8 @@
     {
         "term": "Card : %1 word",
         "definition": {
-            "other": "\uce74\ub4dc: %1\ub2e8\uc5b4"
+            "one": "카드: %1단어",
+            "other": "카드: %1단어"
         },
         "context": "",
         "term_plural": "Card : %1 words",
@@ -368,7 +371,8 @@
     {
         "term": "Subtree : %1 word",
         "definition": {
-            "other": "\ud558\uc704 \ud2b8\ub9ac: %1\ub2e8\uc5b4"
+            "one": "하위 트리: %1단어",
+            "other": "하위 트리: %1단어"
         },
         "context": "",
         "term_plural": "Subtree : %1 words",
@@ -378,7 +382,8 @@
     {
         "term": "Group : %1 word",
         "definition": {
-            "other": "\uadf8\ub8f9: %1\ub2e8\uc5b4"
+            "one": "그룹: %1단어",
+            "other": "그룹: %1단어"
         },
         "context": "",
         "term_plural": "Group : %1 words",
@@ -388,7 +393,8 @@
     {
         "term": "Column : %1 word",
         "definition": {
-            "other": "\uc5f4: %1\ub2e8\uc5b4"
+            "one": "열: %1단어",
+            "other": "열: %1단어"
         },
         "context": "",
         "term_plural": "Column : %1 words",
@@ -397,7 +403,7 @@
     },
     {
         "term": "Saved",
-        "definition": "\uc800\uc7a5\ub428",
+        "definition": "저장됨",
         "context": "",
         "term_plural": "",
         "reference": "Elm:ChangesSaved",
@@ -405,7 +411,7 @@
     },
     {
         "term": "Blank Tree",
-        "definition": "\ube48 \ub098\ubb34",
+        "definition": "빈 문서",
         "context": "",
         "term_plural": "",
         "reference": "Elm:HomeBlank",
@@ -413,7 +419,7 @@
     },
     {
         "term": "From Old Account",
-        "definition": "\uc774\uc804 \uacc4\uc815\uc5d0\uc11c",
+        "definition": "이전 계정에서",
         "context": "",
         "term_plural": "",
         "reference": "Elm:HomeImportLegacy",
@@ -421,7 +427,7 @@
     },
     {
         "term": "Bulk transfer of trees from your legacy account",
-        "definition": "\uae30\uc874 \uacc4\uc815\uc5d0\uc11c \ub098\ubb34 \ub300\ub7c9 \uc804\uc1a1",
+        "definition": "이전 계정의 문서를 한 번에 가져옵니다",
         "context": "",
         "term_plural": "",
         "reference": "Elm:HomeLegacyFrom",
@@ -429,7 +435,7 @@
     },
     {
         "term": "Last Updated",
-        "definition": "\ub9c8\uc9c0\ub9c9 \uc5c5\ub370\uc774\ud2b8",
+        "definition": "마지막 수정",
         "context": "",
         "term_plural": "",
         "reference": "Elm:LastUpdated",
@@ -437,7 +443,7 @@
     },
     {
         "term": "Saved Offline",
-        "definition": "\uc624\ud504\ub77c\uc778\uc73c\ub85c \uc800\uc7a5\ub428",
+        "definition": "오프라인에 저장됨",
         "context": "",
         "term_plural": "",
         "reference": "Elm:SavedInternally",
@@ -445,7 +451,7 @@
     },
     {
         "term": "Synced",
-        "definition": "\ub3d9\uae30\ud654\ub428",
+        "definition": "동기화됨",
         "context": "",
         "term_plural": "",
         "reference": "Elm:ChangesSynced",
@@ -453,7 +459,7 @@
     },
     {
         "term": "More Formatting Options...",
-        "definition": "\ucd94\uac00 \uc11c\uc2dd \uc635\uc158...",
+        "definition": "서식 옵션 더 보기...",
         "context": "",
         "term_plural": "",
         "reference": "Elm:FormattingGuide",
@@ -461,7 +467,7 @@
     },
     {
         "term": "Are you sure you want to undo your changes?",
-        "definition": "\ubcc0\uacbd\uc0ac\ud56d\uc744 \ucde8\uc18c\ud558\uc2dc\uaca0\uc2b5\ub2c8\uae4c?",
+        "definition": "변경 사항을 취소하시겠습니까?",
         "context": "",
         "term_plural": "",
         "reference": "Elm:AreYouSureCancel",
@@ -469,7 +475,7 @@
     },
     {
         "term": "to Edit in Fullscreen",
-        "definition": "\uc804\uccb4 \ud654\uba74\uc5d0\uc11c \ud3b8\uc9d1\ud558\ub824\uba74",
+        "definition": "전체 화면 편집",
         "context": "",
         "term_plural": "",
         "reference": "Elm:EditFullscreenAction",
@@ -477,7 +483,7 @@
     },
     {
         "term": "Quick Document Switcher",
-        "definition": "\ube60\ub978 \ubb38\uc11c \uc804\ud658\uae30",
+        "definition": "빠른 문서 전환",
         "context": "",
         "term_plural": "",
         "reference": "Elm:QuickDocumentSwitcher",
@@ -485,7 +491,7 @@
     },
     {
         "term": "Logout",
-        "definition": "\ub85c\uadf8 \uc544\uc6c3",
+        "definition": "로그아웃",
         "context": "",
         "term_plural": "",
         "reference": "Elm:Logout",
@@ -493,7 +499,7 @@
     },
     {
         "term": "Language",
-        "definition": "\uc5b8\uc5b4",
+        "definition": "언어",
         "context": "",
         "term_plural": "",
         "reference": "Elm:Language",
@@ -501,7 +507,7 @@
     },
     {
         "term": "Contribute translations",
-        "definition": "\ubc88\uc5ed \uae30\uc5ec",
+        "definition": "번역 참여하기",
         "context": "",
         "term_plural": "",
         "reference": "Elm:ContributeTranslations",
@@ -509,7 +515,7 @@
     },
     {
         "term": "here",
-        "definition": "\uc5ec\uae30",
+        "definition": "여기",
         "context": "",
         "term_plural": "",
         "reference": "Elm:Here",
@@ -517,7 +523,7 @@
     },
     {
         "term": "Import JSON tree",
-        "definition": "JSON \ud2b8\ub9ac \uac00\uc838\uc624\uae30",
+        "definition": "JSON 문서 가져오기",
         "context": "",
         "term_plural": "",
         "reference": "Elm:HomeImportJSON",
@@ -525,7 +531,7 @@
     },
     {
         "term": "From Gingko Desktop or Online export file",
-        "definition": "Gingko Desktop \ub610\ub294 \uc628\ub77c\uc778 \ub0b4\ubcf4\ub0b4\uae30 \ud30c\uc77c\uc5d0\uc11c",
+        "definition": "Gingko Desktop 또는 온라인 버전의 내보내기 파일에서",
         "context": "",
         "term_plural": "",
         "reference": "Elm:HomeJSONFrom",
@@ -533,7 +539,7 @@
     },
     {
         "term": "New Document",
-        "definition": "\uc0c8 \ubb38\uc11c",
+        "definition": "새 문서",
         "context": "",
         "term_plural": "",
         "reference": "Elm:NewDocument",
@@ -541,7 +547,7 @@
     },
     {
         "term": "Show Document List",
-        "definition": "\ubb38\uc11c \ubaa9\ub85d \ud45c\uc2dc",
+        "definition": "문서 목록 보기",
         "context": "",
         "term_plural": "",
         "reference": "Elm:ShowDocumentList",
@@ -549,7 +555,7 @@
     },
     {
         "term": "Sort by Name",
-        "definition": "\uc774\ub984\uc73c\ub85c \ubd84\ub958\ud558\ub2e4",
+        "definition": "이름순 정렬",
         "context": "",
         "term_plural": "",
         "reference": "Elm:SortByName",
@@ -557,7 +563,7 @@
     },
     {
         "term": "Sort by Last Modified",
-        "definition": "\ub9c8\uc9c0\ub9c9 \uc218\uc815 \ub0a0\uc9dc \uae30\uc900\uc73c\ub85c \uc815\ub82c",
+        "definition": "수정한 날짜순 정렬",
         "context": "",
         "term_plural": "",
         "reference": "Elm:SortByLastModified",
@@ -565,7 +571,7 @@
     },
     {
         "term": "Sort by Date Created",
-        "definition": "\uc0dd\uc131 \ub0a0\uc9dc\uc21c\uc73c\ub85c \uc815\ub82c",
+        "definition": "만든 날짜순 정렬",
         "context": "",
         "term_plural": "",
         "reference": "Elm:SortByDateCreated",
@@ -573,7 +579,7 @@
     },
     {
         "term": "Templates & Examples",
-        "definition": "\ud15c\ud50c\ub9bf \ubc0f \uc608\uc2dc",
+        "definition": "템플릿 및 예제",
         "context": "",
         "term_plural": "",
         "reference": "Elm:TemplatesAndExamples",
@@ -581,7 +587,7 @@
     },
     {
         "term": "New",
-        "definition": "\uc0c8\ub85c\uc6b4",
+        "definition": "새로 만들기",
         "context": "",
         "term_plural": "",
         "reference": "Elm:New",
@@ -589,7 +595,7 @@
     },
     {
         "term": "Import",
-        "definition": "\uc218\uc785",
+        "definition": "가져오기",
         "context": "",
         "term_plural": "",
         "reference": "Elm:ImportSectionTitle",
@@ -597,7 +603,7 @@
     },
     {
         "term": "Import Text Files",
-        "definition": "\ud14d\uc2a4\ud2b8 \ud30c\uc77c \uac00\uc838\uc624\uae30",
+        "definition": "텍스트 파일 가져오기",
         "context": "",
         "term_plural": "",
         "reference": "Elm:ImportTextFiles",
@@ -605,7 +611,7 @@
     },
     {
         "term": "Import multiple markdown or regular text files.",
-        "definition": "\uc5ec\ub7ec \ub9c8\ud06c\ub2e4\uc6b4 \ub610\ub294 \uc77c\ubc18 \ud14d\uc2a4\ud2b8 \ud30c\uc77c\uc744 \uac00\uc838\uc635\ub2c8\ub2e4.",
+        "definition": "여러 개의 마크다운 또는 일반 텍스트 파일을 가져옵니다.",
         "context": "",
         "term_plural": "",
         "reference": "Elm:ImportTextFilesDesc",
@@ -613,7 +619,7 @@
     },
     {
         "term": "Import Opml Files",
-        "definition": "Opml \ud30c\uc77c \uac00\uc838\uc624\uae30",
+        "definition": "OPML 파일 가져오기",
         "context": "",
         "term_plural": "",
         "reference": "Elm:ImportOpmlFiles",
@@ -621,7 +627,7 @@
     },
     {
         "term": "Import from Workflowy or other outliners.",
-        "definition": "Workflowy \ub610\ub294 \uae30\ud0c0 \uc544\uc6c3\ub77c\uc774\ub108\uc5d0\uc11c \uac00\uc838\uc635\ub2c8\ub2e4.",
+        "definition": "Workflowy 또는 다른 아웃라이너에서 가져옵니다.",
         "context": "",
         "term_plural": "",
         "reference": "Elm:ImportOpmlFilesDesc",
@@ -629,7 +635,7 @@
     },
     {
         "term": "A tree-based calendar",
-        "definition": "\ud2b8\ub9ac \uae30\ubc18 \ub2ec\ub825",
+        "definition": "트리 구조의 달력",
         "context": "",
         "term_plural": "",
         "reference": "Elm:TimelineTemplateDesc",
@@ -637,7 +643,7 @@
     },
     {
         "term": "Academic Paper",
-        "definition": "\ud559\uc220 \ub17c\ubb38",
+        "definition": "학술 논문",
         "context": "",
         "term_plural": "",
         "reference": "Elm:AcademicPaperTemplate",
@@ -645,7 +651,7 @@
     },
     {
         "term": "Starting point for journal paper",
-        "definition": "\uc800\ub110 \ub17c\ubb38\uc758 \ucd9c\ubc1c\uc810",
+        "definition": "학술지 논문 작성의 출발점",
         "context": "",
         "term_plural": "",
         "reference": "Elm:AcademicPaperTemplateDesc",
@@ -653,7 +659,7 @@
     },
     {
         "term": "Project Brainstorming",
-        "definition": "\ud504\ub85c\uc81d\ud2b8 \ube0c\ub808\uc778\uc2a4\ud1a0\ubc0d",
+        "definition": "프로젝트 브레인스토밍",
         "context": "",
         "term_plural": "",
         "reference": "Elm:ProjectBrainstormingTemplate",
@@ -661,7 +667,7 @@
     },
     {
         "term": "Example on clarifying project goals",
-        "definition": "\ud504\ub85c\uc81d\ud2b8 \ubaa9\ud45c\ub97c \uba85\ud655\ud788 \ud558\ub294 \uc608",
+        "definition": "프로젝트 목표를 명확히 하는 예제",
         "context": "",
         "term_plural": "",
         "reference": "Elm:ProjectBrainstormingTemplateDesc",
@@ -669,7 +675,7 @@
     },
     {
         "term": "Hero's Journey",
-        "definition": "\uc601\uc6c5\uc758 \uc5ec\uc815",
+        "definition": "영웅의 여정",
         "context": "",
         "term_plural": "",
         "reference": "Elm:HerosJourneyTemplate",
@@ -677,7 +683,7 @@
     },
     {
         "term": "A framework for fictional stories",
-        "definition": "\ud5c8\uad6c\uc801\uc778 \uc774\uc57c\uae30\ub97c \uc704\ud55c \ud504\ub808\uc784\uc6cc\ud06c",
+        "definition": "소설 창작을 위한 이야기 구조",
         "context": "",
         "term_plural": "",
         "reference": "Elm:HerosJourneyTemplateDesc",
@@ -685,7 +691,7 @@
     },
     {
         "term": "Help",
-        "definition": "\ub3d5\ub2e4",
+        "definition": "도움말",
         "context": "",
         "term_plural": "",
         "reference": "Elm:Help",
@@ -693,7 +699,7 @@
     },
     {
         "term": "What's New",
-        "definition": "\uc0c8\ub85c\uc6b4 \uc18c\uc2dd",
+        "definition": "새로운 기능",
         "context": "",
         "term_plural": "",
         "reference": "Elm:WhatsNew",
@@ -701,7 +707,7 @@
     },
     {
         "term": "Account",
-        "definition": "\uacc4\uc815",
+        "definition": "계정",
         "context": "",
         "term_plural": "",
         "reference": "Elm:AccountTooltip",
@@ -709,7 +715,7 @@
     },
     {
         "term": "Keyboard Shortcuts",
-        "definition": "\ud0a4\ubcf4\ub4dc \ub2e8\ucd95\ud0a4",
+        "definition": "단축키",
         "context": "",
         "term_plural": "",
         "reference": "Elm:KeyboardShortcuts",
@@ -717,7 +723,7 @@
     },
     {
         "term": "View Mode Shortcuts : ",
-        "definition": "\ubcf4\uae30 \ubaa8\ub4dc \ubc14\ub85c\uac00\uae30: ",
+        "definition": "보기 모드 단축키: ",
         "context": "",
         "term_plural": "",
         "reference": "Elm:ViewModeShortcuts",
@@ -725,7 +731,7 @@
     },
     {
         "term": "Card Edit, Create, Delete",
-        "definition": "\uce74\ub4dc \ud3b8\uc9d1, \uc0dd\uc131, \uc0ad\uc81c",
+        "definition": "카드 편집, 생성, 삭제",
         "context": "",
         "term_plural": "",
         "reference": "Elm:CardEditCreateDelete",
@@ -733,15 +739,15 @@
     },
     {
         "term": "Navigation, Moving Cards",
-        "definition": "\ub0b4\ube44\uac8c\uc774\uc158, \uc774\ub3d9\uce74\ub4dc",
+        "definition": "탐색, 카드 이동",
         "context": "",
         "term_plural": "",
         "reference": "Elm:NavigationMovingCards",
         "comment": ""
     },
     {
-        "term": "Copy\/Paste",
-        "definition": "\ubcf5\uc0ac \ubd99\uc5ec \ub123\uae30",
+        "term": "Copy/Paste",
+        "definition": "복사/붙여넣기",
         "context": "",
         "term_plural": "",
         "reference": "Elm:CopyPaste",
@@ -749,7 +755,7 @@
     },
     {
         "term": "Searching, Merging Cards",
-        "definition": "\uac80\uc0c9, \uce74\ub4dc \ubcd1\ud569",
+        "definition": "검색, 카드 병합",
         "context": "",
         "term_plural": "",
         "reference": "Elm:SearchingMerging",
@@ -757,7 +763,7 @@
     },
     {
         "term": "Help, Info, Documents",
-        "definition": "\ub3c4\uc6c0\ub9d0, \uc815\ubcf4, \ubb38\uc11c",
+        "definition": "도움말, 정보, 문서",
         "context": "",
         "term_plural": "",
         "reference": "Elm:HelpInfoDocs",
@@ -765,7 +771,7 @@
     },
     {
         "term": "Edit Mode Shortcuts : ",
-        "definition": "\ud3b8\uc9d1 \ubaa8\ub4dc \ub2e8\ucd95\ud0a4: ",
+        "definition": "편집 모드 단축키: ",
         "context": "",
         "term_plural": "",
         "reference": "Elm:EditModeShortcuts",
@@ -773,7 +779,7 @@
     },
     {
         "term": "Card Save, Create",
-        "definition": "\uce74\ub4dc \uc800\uc7a5, \uc0dd\uc131",
+        "definition": "카드 저장, 생성",
         "context": "",
         "term_plural": "",
         "reference": "Elm:CardSaveCreate",
@@ -781,7 +787,7 @@
     },
     {
         "term": "Edit card",
-        "definition": "\uce74\ub4dc \uc218\uc815",
+        "definition": "카드 편집",
         "context": "",
         "term_plural": "",
         "reference": "Elm:EditCard",
@@ -789,7 +795,7 @@
     },
     {
         "term": "Add card below",
-        "definition": "\uc544\ub798\uc5d0 \uce74\ub4dc \ucd94\uac00",
+        "definition": "아래에 카드 추가",
         "context": "",
         "term_plural": "",
         "reference": "Elm:AddCardBelow",
@@ -797,7 +803,7 @@
     },
     {
         "term": "Add card above",
-        "definition": "\uc704\uc5d0 \uce74\ub4dc \ucd94\uac00",
+        "definition": "위에 카드 추가",
         "context": "",
         "term_plural": "",
         "reference": "Elm:AddCardAbove",
@@ -805,7 +811,7 @@
     },
     {
         "term": "Add card to the right (as child)",
-        "definition": "\uc624\ub978\ucabd\uc5d0 \uce74\ub4dc \ucd94\uac00(\uc790\ub140\ub85c\uc11c)",
+        "definition": "오른쪽에 카드 추가 (하위 카드로)",
         "context": "",
         "term_plural": "",
         "reference": "Elm:AddCardToRight",
@@ -813,7 +819,7 @@
     },
     {
         "term": "Add card below (split at cursor)",
-        "definition": "\uc544\ub798\uc5d0 \uce74\ub4dc \ucd94\uac00(\ucee4\uc11c\uc5d0\uc11c \ubd84\ud560)",
+        "definition": "아래에 카드 추가 (커서 위치에서 분할)",
         "context": "",
         "term_plural": "",
         "reference": "Elm:AddCardBelowSplit",
@@ -821,7 +827,7 @@
     },
     {
         "term": "Add card above (split at cursor)",
-        "definition": "\uc704\uc5d0 \uce74\ub4dc \ucd94\uac00(\ucee4\uc11c\uc5d0\uc11c \ubd84\ud560)",
+        "definition": "위에 카드 추가 (커서 위치에서 분할)",
         "context": "",
         "term_plural": "",
         "reference": "Elm:AddCardAboveSplit",
@@ -829,7 +835,7 @@
     },
     {
         "term": "Add card to the right (split at cursor)",
-        "definition": "\uc624\ub978\ucabd\uc5d0 \uce74\ub4dc \ucd94\uac00(\ucee4\uc11c\uc5d0\uc11c \ubd84\ud560)",
+        "definition": "오른쪽에 카드 추가 (커서 위치에서 분할)",
         "context": "",
         "term_plural": "",
         "reference": "Elm:AddCardToRightSplit",
@@ -837,15 +843,15 @@
     },
     {
         "term": "Delete card (and its children)",
-        "definition": "\uce74\ub4dc(\ubc0f \ud574\ub2f9 \ud558\uc704 \ud56d\ubaa9) \uc0ad\uc81c",
+        "definition": "카드 삭제 (하위 카드 포함)",
         "context": "",
         "term_plural": "",
         "reference": "Elm:DeleteCard",
         "comment": ""
     },
     {
-        "term": "Go up\/down\/left\/right",
-        "definition": "\uc704\/\uc544\ub798\/\uc67c\ucabd\/\uc624\ub978\ucabd\uc73c\ub85c \uc774\ub3d9",
+        "term": "Go up/down/left/right",
+        "definition": "위/아래/왼쪽/오른쪽으로 이동",
         "context": "",
         "term_plural": "",
         "reference": "Elm:GoUpDownLeftRight",
@@ -853,7 +859,7 @@
     },
     {
         "term": "Go to beginning of group",
-        "definition": "\uadf8\ub8f9\uc758 \uc2dc\uc791 \ubd80\ubd84\uc73c\ub85c \uc774\ub3d9",
+        "definition": "그룹의 처음으로 이동",
         "context": "",
         "term_plural": "",
         "reference": "Elm:GoToBeginningOfGroup",
@@ -861,7 +867,7 @@
     },
     {
         "term": "Go to end of group",
-        "definition": "\uadf8\ub8f9 \ub05d\uc73c\ub85c \uc774\ub3d9",
+        "definition": "그룹의 끝으로 이동",
         "context": "",
         "term_plural": "",
         "reference": "Elm:GoToEndOfGroup",
@@ -869,7 +875,7 @@
     },
     {
         "term": "Go to beginning of column",
-        "definition": "\uc5f4\uc758 \uc2dc\uc791\uc73c\ub85c \uc774\ub3d9",
+        "definition": "열의 처음으로 이동",
         "context": "",
         "term_plural": "",
         "reference": "Elm:GoToBeginningOfColumn",
@@ -877,7 +883,7 @@
     },
     {
         "term": "Go to end of column",
-        "definition": "\uc5f4 \ub05d\uc73c\ub85c \uc774\ub3d9",
+        "definition": "열의 끝으로 이동",
         "context": "",
         "term_plural": "",
         "reference": "Elm:GoToEndOfColumn",
@@ -885,7 +891,7 @@
     },
     {
         "term": "Move current card (and children)",
-        "definition": "\ud604\uc7ac \uce74\ub4dc(\ubc0f \ud558\uc704 \ud56d\ubaa9) \uc774\ub3d9",
+        "definition": "현재 카드 이동 (하위 카드 포함)",
         "context": "",
         "term_plural": "",
         "reference": "Elm:MoveCurrentCard",
@@ -893,7 +899,7 @@
     },
     {
         "term": "PageUp",
-        "definition": "\ud398\uc774\uc9c0 \uc704\ub85c",
+        "definition": "PageUp",
         "context": "",
         "term_plural": "",
         "reference": "Elm:PageUp",
@@ -901,7 +907,7 @@
     },
     {
         "term": "PageDown",
-        "definition": "\ud398\uc774\uc9c0\ub2e4\uc6b4",
+        "definition": "PageDown",
         "context": "",
         "term_plural": "",
         "reference": "Elm:PageDown",
@@ -909,7 +915,7 @@
     },
     {
         "term": "Home",
-        "definition": "\uc9d1",
+        "definition": "Home",
         "context": "",
         "term_plural": "",
         "reference": "Elm:HomeKey",
@@ -917,7 +923,7 @@
     },
     {
         "term": "End",
-        "definition": "\ub05d",
+        "definition": "End",
         "context": "",
         "term_plural": "",
         "reference": "Elm:EndKey",
@@ -925,7 +931,7 @@
     },
     {
         "term": "(any of above)",
-        "definition": "(\uc704 \ud56d\ubaa9 \uc911 \ud558\ub098)",
+        "definition": "(위 키 중 하나)",
         "context": "",
         "term_plural": "",
         "reference": "Elm:AnyOfAbove",
@@ -933,7 +939,7 @@
     },
     {
         "term": "Drag card by left edge",
-        "definition": "\uc67c\ucabd \uac00\uc7a5\uc790\ub9ac\ub85c \uce74\ub4dc\ub97c \ub4dc\ub798\uadf8\ud558\uc138\uc694.",
+        "definition": "카드 왼쪽 가장자리를 드래그",
         "context": "",
         "term_plural": "",
         "reference": "Elm:DragCard",
@@ -941,7 +947,7 @@
     },
     {
         "term": "Search",
-        "definition": "\ucc3e\ub2e4",
+        "definition": "검색",
         "context": "",
         "term_plural": "",
         "reference": "Elm:Search",
@@ -949,7 +955,7 @@
     },
     {
         "term": "Clear search, focus current card",
-        "definition": "\uac80\uc0c9\uc5b4 \uc9c0\uc6b0\uae30, \ud604\uc7ac \uce74\ub4dc\uc5d0 \ucd08\uc810 \ub9de\ucd94\uae30",
+        "definition": "검색 지우기, 현재 카드로 초점 이동",
         "context": "",
         "term_plural": "",
         "reference": "Elm:ClearSearch",
@@ -957,7 +963,7 @@
     },
     {
         "term": "Merge card up",
-        "definition": "\uce74\ub4dc \ubcd1\ud569",
+        "definition": "위 카드와 병합",
         "context": "",
         "term_plural": "",
         "reference": "Elm:MergeCardUp",
@@ -965,7 +971,7 @@
     },
     {
         "term": "Merge card down",
-        "definition": "\uce74\ub4dc\ub97c \uc544\ub798\ub85c \ubcd1\ud569",
+        "definition": "아래 카드와 병합",
         "context": "",
         "term_plural": "",
         "reference": "Elm:MergeCardDown",
@@ -973,7 +979,7 @@
     },
     {
         "term": "Copy current subtree",
-        "definition": "\ud604\uc7ac \ud558\uc704 \ud2b8\ub9ac \ubcf5\uc0ac",
+        "definition": "현재 하위 트리 복사",
         "context": "",
         "term_plural": "",
         "reference": "Elm:CopyCurrent",
@@ -981,7 +987,7 @@
     },
     {
         "term": "Paste subtree below current card",
-        "definition": "\ud604\uc7ac \uce74\ub4dc \uc544\ub798\uc5d0 \ud558\uc704 \ud2b8\ub9ac \ubd99\uc5ec\ub123\uae30",
+        "definition": "현재 카드 아래에 하위 트리 붙여넣기",
         "context": "",
         "term_plural": "",
         "reference": "Elm:PasteBelow",
@@ -989,7 +995,7 @@
     },
     {
         "term": "Paste subtree as child of current card",
-        "definition": "\ud558\uc704 \ud2b8\ub9ac\ub97c \ud604\uc7ac \uce74\ub4dc\uc758 \ud558\uc704 \ud56d\ubaa9\uc73c\ub85c \ubd99\uc5ec\ub123\uae30",
+        "definition": "하위 트리를 현재 카드의 하위 카드로 붙여넣기",
         "context": "",
         "term_plural": "",
         "reference": "Elm:PasteAsChild",
@@ -997,7 +1003,7 @@
     },
     {
         "term": "Insert selected text as new card",
-        "definition": "\uc120\ud0dd\ud55c \ud14d\uc2a4\ud2b8\ub97c \uc0c8 \uce74\ub4dc\ub85c \uc0bd\uc785",
+        "definition": "선택한 텍스트를 새 카드로 삽입",
         "context": "",
         "term_plural": "",
         "reference": "Elm:InsertSelected",
@@ -1005,7 +1011,7 @@
     },
     {
         "term": "Drag selected text into tree",
-        "definition": "\uc120\ud0dd\ud55c \ud14d\uc2a4\ud2b8\ub97c \ud2b8\ub9ac\ub85c \ub4dc\ub798\uadf8",
+        "definition": "선택한 텍스트를 문서로 드래그",
         "context": "",
         "term_plural": "",
         "reference": "Elm:DragSelected",
@@ -1013,7 +1019,7 @@
     },
     {
         "term": "Word counts",
-        "definition": "\ub2e8\uc5b4 \uc218",
+        "definition": "단어 수",
         "context": "",
         "term_plural": "",
         "reference": "Elm:WordCounts",
@@ -1021,7 +1027,7 @@
     },
     {
         "term": "Switch to different document",
-        "definition": "\ub2e4\ub978 \ubb38\uc11c\ub85c \uc804\ud658",
+        "definition": "다른 문서로 전환",
         "context": "",
         "term_plural": "",
         "reference": "Elm:SwitchDocuments",
@@ -1029,7 +1035,7 @@
     },
     {
         "term": "This help screen",
-        "definition": "\uc774 \ub3c4\uc6c0\ub9d0 \ud654\uba74",
+        "definition": "이 도움말 화면",
         "context": "",
         "term_plural": "",
         "reference": "Elm:ThisHelpScreen",
@@ -1037,7 +1043,7 @@
     },
     {
         "term": " or ",
-        "definition": " \ub610\ub294 ",
+        "definition": " 또는 ",
         "context": "",
         "term_plural": "",
         "reference": "Elm:Or",
@@ -1045,7 +1051,7 @@
     },
     {
         "term": "Edit card in fullscreen mode",
-        "definition": "\uc804\uccb4 \ud654\uba74 \ubaa8\ub4dc\uc5d0\uc11c \uce74\ub4dc \ud3b8\uc9d1",
+        "definition": "전체 화면에서 카드 편집",
         "context": "",
         "term_plural": "",
         "reference": "Elm:EditCardFullscreen",
@@ -1053,7 +1059,7 @@
     },
     {
         "term": "Edit Cards",
-        "definition": "\uce74\ub4dc \ud3b8\uc9d1",
+        "definition": "카드 편집",
         "context": "",
         "term_plural": "",
         "reference": "Elm:EditCards",
@@ -1061,7 +1067,7 @@
     },
     {
         "term": "Shift",
-        "definition": "\uc62e\uae30\ub2e4",
+        "definition": "Shift",
         "context": "",
         "term_plural": "",
         "reference": "Elm:ShiftKey",
@@ -1069,7 +1075,7 @@
     },
     {
         "term": "AltKey",
-        "definition": "Alt \ud0a4",
+        "definition": "Alt",
         "context": "",
         "term_plural": "",
         "reference": "Elm:AltKey",
@@ -1077,7 +1083,7 @@
     },
     {
         "term": "Navigate",
-        "definition": "\ud0d0\uc0c9",
+        "definition": "탐색",
         "context": "",
         "term_plural": "",
         "reference": "Elm:Navigate",
@@ -1085,7 +1091,7 @@
     },
     {
         "term": "Add New Cards",
-        "definition": "\uc0c8 \uce74\ub4dc \ucd94\uac00",
+        "definition": "새 카드 추가",
         "context": "",
         "term_plural": "",
         "reference": "Elm:AddNewCards",
@@ -1093,7 +1099,7 @@
     },
     {
         "term": "Split At Cursor",
-        "definition": "\ucee4\uc11c\uc5d0\uc11c \ubd84\ud560",
+        "definition": "커서 위치에서 분할",
         "context": "",
         "term_plural": "",
         "reference": "Elm:SplitAtCursor",
@@ -1101,7 +1107,7 @@
     },
     {
         "term": "Merge Cards",
-        "definition": "\uce74\ub4dc \ubcd1\ud569",
+        "definition": "카드 병합",
         "context": "",
         "term_plural": "",
         "reference": "Elm:MergeCards",
@@ -1109,7 +1115,7 @@
     },
     {
         "term": "Move & Delete Cards",
-        "definition": "\uce74\ub4dc \uc774\ub3d9 \ubc0f \uc0ad\uc81c",
+        "definition": "카드 이동 및 삭제",
         "context": "",
         "term_plural": "",
         "reference": "Elm:MoveAndDelete",
@@ -1117,7 +1123,7 @@
     },
     {
         "term": "Bold selection",
-        "definition": "\uad75\uc740 \uae00\uc528 \uc120\ud0dd",
+        "definition": "선택 영역 굵게",
         "context": "",
         "term_plural": "",
         "reference": "Elm:BoldSelection",
@@ -1125,7 +1131,7 @@
     },
     {
         "term": "Italicize selection",
-        "definition": "\uc120\ud0dd \ud56d\ubaa9\uc744 \uc774\ud0e4\ub9ad\uccb4\ub85c \ud45c\uc2dc",
+        "definition": "선택 영역 기울임꼴",
         "context": "",
         "term_plural": "",
         "reference": "Elm:ItalicizeSelection",
@@ -1133,7 +1139,7 @@
     },
     {
         "term": "Save changes",
-        "definition": "\ubcc0\uacbd \uc0ac\ud56d\uc744 \uc800\uc7a5\ud558\ub2e4",
+        "definition": "변경 사항 저장",
         "context": "",
         "term_plural": "",
         "reference": "Elm:SaveChanges",
@@ -1141,7 +1147,7 @@
     },
     {
         "term": "Save changes and exit card",
-        "definition": "\ubcc0\uacbd\uc0ac\ud56d \uc800\uc7a5 \ubc0f \uce74\ub4dc \uc885\ub8cc",
+        "definition": "변경 사항 저장 후 카드 나가기",
         "context": "",
         "term_plural": "",
         "reference": "Elm:SaveChangesAndExit",
@@ -1149,7 +1155,7 @@
     },
     {
         "term": "Exit edit mode",
-        "definition": "\ud3b8\uc9d1 \ubaa8\ub4dc \uc885\ub8cc",
+        "definition": "편집 모드 종료",
         "context": "",
         "term_plural": "",
         "reference": "Elm:ExitEditMode",
@@ -1157,7 +1163,7 @@
     },
     {
         "term": "Other Shortcuts",
-        "definition": "\uae30\ud0c0 \ub2e8\ucd95\ud0a4",
+        "definition": "기타 단축키",
         "context": "",
         "term_plural": "",
         "reference": "Elm:OtherShortcuts",
@@ -1165,7 +1171,7 @@
     },
     {
         "term": "Display word counts",
-        "definition": "\ub2e8\uc5b4 \uc218 \ud45c\uc2dc",
+        "definition": "단어 수 표시",
         "context": "",
         "term_plural": "",
         "reference": "Elm:DisplayWordCounts",
@@ -1173,15 +1179,15 @@
     },
     {
         "term": "(Edit Mode)",
-        "definition": "(\ud3b8\uc9d1 \ubaa8\ub4dc)",
+        "definition": "(편집 모드)",
         "context": "",
         "term_plural": "",
         "reference": "Elm:EditMode",
         "comment": ""
     },
     {
-        "term": "Save\/Cancel Changes",
-        "definition": "\ubcc0\uacbd \uc0ac\ud56d \uc800\uc7a5\/\ucde8\uc18c",
+        "term": "Save/Cancel Changes",
+        "definition": "변경 사항 저장/취소",
         "context": "",
         "term_plural": "",
         "reference": "Elm:SaveOrCancelChanges",
@@ -1189,7 +1195,7 @@
     },
     {
         "term": "Formatting",
-        "definition": "\uc11c\uc2dd \uc9c0\uc815",
+        "definition": "서식",
         "context": "",
         "term_plural": "",
         "reference": "Elm:Formatting",
@@ -1197,7 +1203,7 @@
     },
     {
         "term": "# Title\n## Subtitle",
-        "definition": "# \uc81c\ubaa9\n## \uc790\ub9c9",
+        "definition": "# 제목\n## 부제목",
         "context": "",
         "term_plural": "",
         "reference": "Elm:FormattingTitle",
@@ -1205,7 +1211,7 @@
     },
     {
         "term": "Set title level (# to #####)",
-        "definition": "\uc81c\ubaa9 \uc218\uc900 \uc124\uc815(#~#####)",
+        "definition": "제목 수준 설정 (# ~ #####)",
         "context": "",
         "term_plural": "",
         "reference": "Elm:SetTitleLevel",
@@ -1213,15 +1219,15 @@
     },
     {
         "term": "- List item\n  - Subitem",
-        "definition": "- \ubaa9\ub85d \ud56d\ubaa9\n  - \ud558\uc704\ud56d\ubaa9",
+        "definition": "- 목록 항목\n  - 하위 항목",
         "context": "",
         "term_plural": "",
         "reference": "Elm:FormattingList",
         "comment": ""
     },
     {
-        "term": "[link](http:\/\/t.co)",
-        "definition": "[\ub9c1\ud06c](http:\/\/t.co)",
+        "term": "[link](http://t.co)",
+        "definition": "[링크](http://t.co)",
         "context": "",
         "term_plural": "",
         "reference": "Elm:FormattingLink",
@@ -1229,7 +1235,7 @@
     },
     {
         "term": "ParenNumber",
-        "definition": "Paren\ubc88\ud638",
+        "definition": "(숫자)",
         "context": "",
         "term_plural": "",
         "reference": "Elm:ParenNumber",
@@ -1237,7 +1243,7 @@
     },
     {
         "term": "SetHeadingLevel",
-        "definition": "\uc81c\ubaa9 \uc218\uc900 \uc124\uc815",
+        "definition": "제목 수준 설정",
         "context": "",
         "term_plural": "",
         "reference": "Elm:SetHeadingLevel",
@@ -1245,7 +1251,7 @@
     },
     {
         "term": "Help Videos",
-        "definition": "\ub3c4\uc6c0\ub9d0 \ub3d9\uc601\uc0c1",
+        "definition": "도움말 동영상",
         "context": "",
         "term_plural": "",
         "reference": "Elm:HelpVideos",
@@ -1253,7 +1259,7 @@
     },
     {
         "term": "FAQ & Documentation",
-        "definition": "FAQ \ubc0f \ubb38\uc11c",
+        "definition": "FAQ 및 설명서",
         "context": "",
         "term_plural": "",
         "reference": "Elm:FAQAndDocs",
@@ -1261,7 +1267,7 @@
     },
     {
         "term": "Open Quick Switcher",
-        "definition": "\ud035 \uc2a4\uc704\ucc98 \uc5f4\uae30",
+        "definition": "빠른 전환 열기",
         "context": "",
         "term_plural": "",
         "reference": "Elm:OpenQuickSwitcher",
@@ -1269,7 +1275,7 @@
     },
     {
         "term": "Contact Support",
-        "definition": "\uc5f0\ub77d\ucc98 \uc9c0\uc6d0",
+        "definition": "고객 지원 문의",
         "context": "",
         "term_plural": "",
         "reference": "Elm:ContactSupport",
@@ -1277,7 +1283,7 @@
     },
     {
         "term": "Version History",
-        "definition": "\ubc84\uc804 \uae30\ub85d",
+        "definition": "버전 기록",
         "context": "",
         "term_plural": "",
         "reference": "Elm:VersionHistory",
@@ -1285,7 +1291,7 @@
     },
     {
         "term": "Document Settings",
-        "definition": "\ubb38\uc11c \uc124\uc815",
+        "definition": "문서 설정",
         "context": "",
         "term_plural": "",
         "reference": "Elm:DocumentSettings",
@@ -1293,7 +1299,7 @@
     },
     {
         "term": "Word count...",
-        "definition": "\ub2e8\uc5b4 \uc218...",
+        "definition": "단어 수...",
         "context": "",
         "term_plural": "",
         "reference": "Elm:WordCount",
@@ -1302,7 +1308,8 @@
     {
         "term": "Total Cards in Tree : %1",
         "definition": {
-            "other": "\ud2b8\ub9ac\uc758 \ucd1d \uce74\ub4dc \uc218: %1"
+            "one": "문서의 전체 카드 수: %1",
+            "other": "문서의 전체 카드 수: %1"
         },
         "context": "",
         "term_plural": "Total Cards in Tree : %1",
@@ -1311,7 +1318,7 @@
     },
     {
         "term": "Document Theme",
-        "definition": "\ubb38\uc11c \ud14c\ub9c8",
+        "definition": "문서 테마",
         "context": "",
         "term_plural": "",
         "reference": "Elm:DocumentTheme",
@@ -1319,7 +1326,7 @@
     },
     {
         "term": "Default",
-        "definition": "\uae30\ubcf8",
+        "definition": "기본",
         "context": "",
         "term_plural": "",
         "reference": "Elm:ThemeDefault",
@@ -1327,7 +1334,7 @@
     },
     {
         "term": "Dark Mode",
-        "definition": "\ub2e4\ud06c \ubaa8\ub4dc",
+        "definition": "다크 모드",
         "context": "",
         "term_plural": "",
         "reference": "Elm:ThemeDarkMode",
@@ -1335,7 +1342,7 @@
     },
     {
         "term": "Classic Gingkoapp",
-        "definition": "\ud074\ub798\uc2dd \uc9d5\ucf54\uc571",
+        "definition": "클래식 Gingkoapp",
         "context": "",
         "term_plural": "",
         "reference": "Elm:ThemeClassic",
@@ -1343,7 +1350,7 @@
     },
     {
         "term": "Gray",
-        "definition": "\ud68c\uc0c9",
+        "definition": "회색",
         "context": "",
         "term_plural": "",
         "reference": "Elm:ThemeGray",
@@ -1351,7 +1358,7 @@
     },
     {
         "term": "Green",
-        "definition": "\ub179\uc0c9",
+        "definition": "녹색",
         "context": "",
         "term_plural": "",
         "reference": "Elm:ThemeGreen",
@@ -1359,7 +1366,7 @@
     },
     {
         "term": "Turquoise",
-        "definition": "\ud130\ud0a4 \uc625",
+        "definition": "청록색",
         "context": "",
         "term_plural": "",
         "reference": "Elm:ThemeTurquoise",
@@ -1367,7 +1374,7 @@
     },
     {
         "term": "Export or Print",
-        "definition": "\ub0b4\ubcf4\ub0b4\uae30 \ub610\ub294 \uc778\uc1c4",
+        "definition": "내보내기 또는 인쇄",
         "context": "",
         "term_plural": "",
         "reference": "Elm:ExportOrPrint",
@@ -1375,7 +1382,7 @@
     },
     {
         "term": "Everything",
-        "definition": "\ubaa8\ub4e0 \uac83",
+        "definition": "전체",
         "context": "",
         "term_plural": "",
         "reference": "Elm:ExportSettingEverything",
@@ -1383,7 +1390,7 @@
     },
     {
         "term": "All cards in the tree (in depth-first order)",
-        "definition": "\ud2b8\ub9ac\uc758 \ubaa8\ub4e0 \uce74\ub4dc(\uae4a\uc774 \uc6b0\uc120 \uc21c\uc11c)",
+        "definition": "문서의 모든 카드 (깊이 우선 순서)",
         "context": "",
         "term_plural": "",
         "reference": "Elm:ExportSettingEverythingDesc",
@@ -1391,7 +1398,7 @@
     },
     {
         "term": "Current Subtree",
-        "definition": "\ud604\uc7ac \ud558\uc704 \ud2b8\ub9ac",
+        "definition": "현재 하위 트리",
         "context": "",
         "term_plural": "",
         "reference": "Elm:ExportSettingCurrentSubtree",
@@ -1399,7 +1406,7 @@
     },
     {
         "term": "Current card and all its children",
-        "definition": "\ud604\uc7ac \uce74\ub4dc\uc640 \ubaa8\ub4e0 \ud558\uc704 \uce74\ub4dc",
+        "definition": "현재 카드와 모든 하위 카드",
         "context": "",
         "term_plural": "",
         "reference": "Elm:ExportSettingCurrentSubtreeDesc",
@@ -1407,7 +1414,7 @@
     },
     {
         "term": "Leaves-only",
-        "definition": "\ub098\ubb47\uc78e\ub9cc",
+        "definition": "말단 카드만",
         "context": "",
         "term_plural": "",
         "reference": "Elm:ExportSettingLeavesOnly",
@@ -1415,7 +1422,7 @@
     },
     {
         "term": "Only cards without children",
-        "definition": "\uc790\ub140\uac00 \uc5c6\ub294 \uce74\ub4dc\ub9cc",
+        "definition": "하위 카드가 없는 카드만",
         "context": "",
         "term_plural": "",
         "reference": "Elm:ExportSettingLeavesOnlyDesc",
@@ -1423,7 +1430,7 @@
     },
     {
         "term": "Current Column",
-        "definition": "\ud604\uc7ac \uc5f4",
+        "definition": "현재 열",
         "context": "",
         "term_plural": "",
         "reference": "Elm:ExportSettingCurrentColumn",
@@ -1431,7 +1438,7 @@
     },
     {
         "term": "Word",
-        "definition": "\ub2e8\uc5b4",
+        "definition": "Word",
         "context": "",
         "term_plural": "",
         "reference": "Elm:ExportSettingWord",
@@ -1439,7 +1446,7 @@
     },
     {
         "term": "Plain Text",
-        "definition": "\uc77c\ubc18 \ud14d\uc2a4\ud2b8",
+        "definition": "일반 텍스트",
         "context": "",
         "term_plural": "",
         "reference": "Elm:ExportSettingPlainText",
@@ -1455,7 +1462,7 @@
     },
     {
         "term": "Download Word File",
-        "definition": "\uc6cc\ub4dc \ud30c\uc77c \ub2e4\uc6b4\ub85c\ub4dc",
+        "definition": "Word 파일 다운로드",
         "context": "",
         "term_plural": "",
         "reference": "Elm:DownloadWordFile",
@@ -1463,7 +1470,7 @@
     },
     {
         "term": "Download Markdown text file",
-        "definition": "\ub9c8\ud06c\ub2e4\uc6b4 \ud14d\uc2a4\ud2b8 \ud30c\uc77c \ub2e4\uc6b4\ub85c\ub4dc",
+        "definition": "마크다운 텍스트 파일 다운로드",
         "context": "",
         "term_plural": "",
         "reference": "Elm:DownloadTextFile",
@@ -1471,7 +1478,7 @@
     },
     {
         "term": "Download JSON file",
-        "definition": "JSON \ud30c\uc77c \ub2e4\uc6b4\ub85c\ub4dc",
+        "definition": "JSON 파일 다운로드",
         "context": "",
         "term_plural": "",
         "reference": "Elm:DownloadJSONFile",
@@ -1479,7 +1486,7 @@
     },
     {
         "term": "Print this",
-        "definition": "\uc774\uac83\uc744 \uc778\uc1c4\ud558\uc138\uc694",
+        "definition": "인쇄",
         "context": "",
         "term_plural": "",
         "reference": "Elm:PrintThis",
@@ -1487,7 +1494,7 @@
     },
     {
         "term": "Upgrade",
-        "definition": "\uc5c5\uadf8\ub808\uc774\ub4dc",
+        "definition": "업그레이드",
         "context": "",
         "term_plural": "",
         "reference": "Elm:Upgrade",
@@ -1496,7 +1503,8 @@
     {
         "term": "%1 day left in trial",
         "definition": {
-            "other": "\ud3c9\uac00\ud310 \uae30\uac04\uc774 %1\uc77c \ub0a8\uc558\uc2b5\ub2c8\ub2e4"
+            "one": "평가판 기간 %1일 남음",
+            "other": "평가판 기간 %1일 남음"
         },
         "context": "",
         "term_plural": "%1 days left in trial",
@@ -1505,7 +1513,7 @@
     },
     {
         "term": "Trial Expired",
-        "definition": "\ud3c9\uac00\ud310\uc774 \ub9cc\ub8cc\ub418\uc5c8\uc2b5\ub2c8\ub2e4.",
+        "definition": "평가판 만료",
         "context": "",
         "term_plural": "",
         "reference": "Elm:TrialExpired",
@@ -1513,7 +1521,7 @@
     },
     {
         "term": "Manage Subscription",
-        "definition": "\uad6c\ub3c5 \uad00\ub9ac",
+        "definition": "구독 관리",
         "context": "",
         "term_plural": "",
         "reference": "Elm:ManageSubscription",
@@ -1521,7 +1529,7 @@
     },
     {
         "term": "Please confirm your email.",
-        "definition": "\uc774\uba54\uc77c\uc744 \ud655\uc778\ud558\uc2dc\uae30 \ubc14\ub78d\ub2c8\ub2e4.",
+        "definition": "이메일 인증이 필요합니다.",
         "context": "",
         "term_plural": "",
         "reference": "Elm:ConfirmBannerStrong",
@@ -1529,7 +1537,7 @@
     },
     {
         "term": "We've sent instructions to ",
-        "definition": "\ub2e4\uc74c \uc8fc\uc18c\ub85c \uc9c0\uce68\uc744 \ubcf4\ub0c8\uc2b5\ub2c8\ub2e4. ",
+        "definition": "다음 주소로 안내 메일을 보냈습니다: ",
         "context": "",
         "term_plural": "",
         "reference": "Elm:ConfirmBannerBody",
@@ -1537,7 +1545,7 @@
     },
     {
         "term": "Love Gingko Writer?",
-        "definition": "\uc740\ud589\ub098\ubb34 \uc791\uac00\ub97c \uc88b\uc544\ud558\uc2dc\ub098\uc694?",
+        "definition": "Gingko Writer가 마음에 드시나요?",
         "context": "",
         "term_plural": "",
         "reference": "Elm:WordOfMouthCTA1",
@@ -1545,7 +1553,7 @@
     },
     {
         "term": "Leave a Testimonial",
-        "definition": "\ud3c9\uac00\ub97c \ub0a8\uaca8\uc8fc\uc138\uc694",
+        "definition": "후기 남기기",
         "context": "",
         "term_plural": "",
         "reference": "Elm:WordOfMouthCTA2",
@@ -1553,7 +1561,7 @@
     },
     {
         "term": "Timeline 2026",
-        "definition": "\ud0c0\uc784\ub77c\uc778 2026",
+        "definition": "타임라인 2026",
         "context": "",
         "term_plural": "",
         "reference": "Elm:TimelineTemplate",
@@ -1561,7 +1569,7 @@
     },
     {
         "term": "Duplicate Tree",
-        "definition": "\uc911\ubcf5 \ud2b8\ub9ac",
+        "definition": "문서 복제",
         "context": "",
         "term_plural": "",
         "reference": "Elm:DuplicateDocument",
@@ -1569,7 +1577,7 @@
     },
     {
         "term": "Delete Tree",
-        "definition": "\ud2b8\ub9ac \uc0ad\uc81c",
+        "definition": "문서 삭제",
         "context": "",
         "term_plural": "",
         "reference": "Elm:DeleteDocument",
@@ -1577,7 +1585,7 @@
     },
     {
         "term": "Loading...",
-        "definition": "\ub85c\ub4dc \uc911...",
+        "definition": "불러오는 중...",
         "context": "",
         "term_plural": "",
         "reference": "Elm:Loading",
@@ -1585,7 +1593,7 @@
     },
     {
         "term": "Last synced",
-        "definition": "\ub9c8\uc9c0\ub9c9 \ub3d9\uae30\ud654",
+        "definition": "마지막 동기화",
         "context": "",
         "term_plural": "",
         "reference": "Elm:LastSynced",
@@ -1593,7 +1601,7 @@
     },
     {
         "term": "Upgrade document to new format",
-        "definition": "\ubb38\uc11c\ub97c \uc0c8\ub85c\uc6b4 \ud615\uc2dd\uc73c\ub85c \uc5c5\uadf8\ub808\uc774\ub4dc",
+        "definition": "문서를 새 형식으로 업그레이드",
         "context": "",
         "term_plural": "",
         "reference": "Elm:MigrateTooltip",
@@ -1602,7 +1610,8 @@
     {
         "term": "Card : %1 character",
         "definition": {
-            "other": "\uce74\ub4dc: %1\uc790"
+            "one": "카드: %1자",
+            "other": "카드: %1자"
         },
         "context": "",
         "term_plural": "Card : %1 characters",
@@ -1612,7 +1621,8 @@
     {
         "term": "Subtree : %1 character",
         "definition": {
-            "other": "\ud558\uc704 \ud2b8\ub9ac: %1\uc790"
+            "one": "하위 트리: %1자",
+            "other": "하위 트리: %1자"
         },
         "context": "",
         "term_plural": "Subtree : %1 characters",
@@ -1622,7 +1632,8 @@
     {
         "term": "Group : %1 character",
         "definition": {
-            "other": "\uadf8\ub8f9: %1\uc790"
+            "one": "그룹: %1자",
+            "other": "그룹: %1자"
         },
         "context": "",
         "term_plural": "Group : %1 characters",
@@ -1632,7 +1643,8 @@
     {
         "term": "Column : %1 character",
         "definition": {
-            "other": "\uc5f4: %1\uc790"
+            "one": "열: %1자",
+            "other": "열: %1자"
         },
         "context": "",
         "term_plural": "Column : %1 characters",
@@ -1642,7 +1654,8 @@
     {
         "term": "Total : %1 character",
         "definition": {
-            "other": "\uc804\uccb4: %1\uc790"
+            "one": "전체: %1자",
+            "other": "전체: %1자"
         },
         "context": "",
         "term_plural": "Total : %1 characters",
@@ -1651,7 +1664,7 @@
     },
     {
         "term": "Only cards in the current (vertical) column",
-        "definition": "\ud604\uc7ac(\uc138\ub85c) \uc5f4\uc758 \uce74\ub4dc\ub9cc",
+        "definition": "현재 (세로) 열의 카드만",
         "context": "",
         "term_plural": "",
         "reference": "Elm:ExportSettingCurrentColumnDesc",
@@ -1667,7 +1680,7 @@
     },
     {
         "term": "Close Export View",
-        "definition": "\ub0b4\ubcf4\ub0b4\uae30 \ubcf4\uae30 \ub2eb\uae30",
+        "definition": "내보내기 화면 닫기",
         "context": "",
         "term_plural": "",
         "reference": "Elm:CloseExportView",
@@ -1675,10 +1688,98 @@
     },
     {
         "term": "Download OPML file",
-        "definition": "OPML \ud30c\uc77c \ub2e4\uc6b4\ub85c\ub4dc",
+        "definition": "OPML 파일 다운로드",
         "context": "",
         "term_plural": "",
         "reference": "Elm:DownloadOPMLFile",
+        "comment": ""
+    },
+    {
+        "term": "(Works across documents)",
+        "definition": "(다른 문서 간에도 사용 가능)",
+        "context": "",
+        "term_plural": "",
+        "reference": "Elm:WorksAcrossDocuments",
+        "comment": ""
+    },
+    {
+        "term": "Collapse cards",
+        "definition": "카드 접기",
+        "context": "",
+        "term_plural": "",
+        "reference": "Elm:CollapseCards",
+        "comment": ""
+    },
+    {
+        "term": "AI Features (BETA)",
+        "definition": "AI 기능 (베타)",
+        "context": "",
+        "term_plural": "",
+        "reference": "Elm:AIFeatures",
+        "comment": ""
+    },
+    {
+        "term": "AI Prompt",
+        "definition": "AI 프롬프트",
+        "context": "",
+        "term_plural": "",
+        "reference": "Elm:TooltipAIPrompt",
+        "comment": ""
+    },
+    {
+        "term": "to open AI Prompt",
+        "definition": "AI 프롬프트 열기",
+        "context": "",
+        "term_plural": "",
+        "reference": "Elm:ToOpenAIPrompt",
+        "comment": ""
+    },
+    {
+        "term": "Generate as Children of Current",
+        "definition": "현재 카드의 하위 카드로 생성",
+        "context": "",
+        "term_plural": "",
+        "reference": "Elm:AIGenerateChildren",
+        "comment": ""
+    },
+    {
+        "term": "Generate Below Current",
+        "definition": "현재 카드 아래에 생성",
+        "context": "",
+        "term_plural": "",
+        "reference": "Elm:AIGenerateBelow",
+        "comment": ""
+    },
+    {
+        "term": "to Insert Link",
+        "definition": "링크 삽입",
+        "context": "",
+        "term_plural": "",
+        "reference": "Elm:ForInsertLink",
+        "comment": ""
+    },
+    {
+        "term": "Insert Link",
+        "definition": "링크 삽입",
+        "context": "",
+        "term_plural": "",
+        "reference": "Elm:InsertLink",
+        "comment": ""
+    },
+    {
+        "term": "Contact Support",
+        "definition": "고객 지원 문의",
+        "context": "",
+        "term_plural": "",
+        "reference": "Elm:EmailSupport",
+        "comment": ""
+    },
+    {
+        "term": "Upgrade document to new format",
+        "definition": "문서를 새 형식으로 업그레이드",
+        "context": "",
+        "term_plural": "",
+        "reference": "Elm:MigrateToCardBased",
         "comment": ""
     }
 ]

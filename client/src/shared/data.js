@@ -238,7 +238,9 @@ async function loadAll(localDb, treeId) {
   let emptyExists = false;
   let docs = allDocsRes.rows.map(r =>
      { if(_.isEmpty(r.doc)) {
-         alert(`Missing: ${r.id.substr(0,13)}\n\nPart of tree couldn't be loaded.\nTry logging out, and back in.`)
+         alert(document.documentElement.lang === "ko"
+           ? `누락됨: ${r.id.substr(0,13)}\n\n문서 일부를 불러오지 못했습니다.\n로그아웃했다가 다시 로그인해 주세요.`
+           : `Missing: ${r.id.substr(0,13)}\n\nPart of tree couldn't be loaded.\nTry logging out, and back in.`)
          emptyExists = true;
        }
        return r.doc;

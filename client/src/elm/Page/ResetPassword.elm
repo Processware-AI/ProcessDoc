@@ -92,7 +92,7 @@ update msg model =
             ( model, Cmd.none )
 
         SubmittedForm ->
-            case validate modelValidator model of
+            case validate (modelValidator (GlobalData.language model.globalData)) model of
                 Ok validModel ->
                     ( model
                     , sendResetPasswordRequest validModel
@@ -103,13 +103,16 @@ update msg model =
 
         Blurred field ->
             let
+                lang =
+                    GlobalData.language model.globalData
+
                 validator =
                     case field of
                         Password ->
-                            passwordValidator
+                            passwordValidator lang
 
                         PasswordConfirm ->
-                            passwordConfirmValidator
+                            passwordConfirmValidator lang
 
                         Form ->
                             ifTrue (always True) ( Form, "" )
@@ -132,21 +135,24 @@ update msg model =
 
         CompletedResetPassword (Err error) ->
             let
+                lang =
+                    GlobalData.language model.globalData
+
                 fallbackMsg =
-                    ( Form, "Server Issue. Something wrong on our end. Please let us know!" )
+                    ( Form, Translation.enKo lang "Server Issue. Something wrong on our end. Please let us know!" "서버 문제가 발생했습니다. 저희 쪽에 문제가 있는 것 같습니다. 알려 주세요!" )
 
                 errorMsg =
                     case error of
                         Timeout ->
-                            ( Form, "Timed out. Maybe there's a server issue?" )
+                            ( Form, Translation.enKo lang "Timed out. Maybe there's a server issue?" "시간이 초과되었습니다. 서버에 문제가 있는 것 같습니다." )
 
                         NetworkError ->
-                            ( Form, "Network Error. Maybe you're offline?" )
+                            ( Form, Translation.enKo lang "Network Error. Maybe you're offline?" "네트워크 오류입니다. 오프라인 상태인지 확인해 주세요." )
 
                         BadStatus statusCode ->
                             case statusCode of
                                 409 ->
-                                    ( Form, "Username already exists. Login?" )
+                                    ( Form, Translation.enKo lang "Username already exists. Login?" "이미 존재하는 계정입니다. 로그인하시겠습니까?" )
 
                                 _ ->
                                     fallbackMsg
@@ -160,27 +166,27 @@ update msg model =
             ( model, Nav.replaceUrl model.navKey "/" )
 
 
-passwordValidator : Validator ( Field, String ) Model
-passwordValidator =
+passwordValidator : Language -> Validator ( Field, String ) Model
+passwordValidator lang =
     Validate.firstError
-        [ ifBlank .password ( Password, "Please enter a password." )
-        , ifTrue (\model -> String.length model.password < 7) ( Password, "Password should be 7 characters or more." )
+        [ ifBlank .password ( Password, Translation.enKo lang "Please enter a password." "비밀번호를 입력해 주세요." )
+        , ifTrue (\model -> String.length model.password < 7) ( Password, Translation.enKo lang "Password should be 7 characters or more." "비밀번호는 7자 이상이어야 합니다." )
         ]
 
 
-passwordConfirmValidator : Validator ( Field, String ) Model
-passwordConfirmValidator =
+passwordConfirmValidator : Language -> Validator ( Field, String ) Model
+passwordConfirmValidator lang =
     Validate.firstError
-        [ ifBlank .passwordConfirm ( PasswordConfirm, "Please enter your password twice." )
-        , ifFalse (\m -> m.password == m.passwordConfirm) ( PasswordConfirm, "Passwords do not match." )
+        [ ifBlank .passwordConfirm ( PasswordConfirm, Translation.enKo lang "Please enter your password twice." "비밀번호를 두 번 입력해 주세요." )
+        , ifFalse (\m -> m.password == m.passwordConfirm) ( PasswordConfirm, Translation.enKo lang "Passwords do not match." "비밀번호가 일치하지 않습니다." )
         ]
 
 
-modelValidator : Validator ( Field, String ) Model
-modelValidator =
+modelValidator : Language -> Validator ( Field, String ) Model
+modelValidator lang =
     Validate.all
-        [ passwordValidator
-        , passwordConfirmValidator
+        [ passwordValidator lang
+        , passwordConfirmValidator lang
         ]
 
 
@@ -200,6 +206,9 @@ sendResetPasswordRequest validModel =
 view : Model -> Html Msg
 view model =
     let
+        lang =
+            GlobalData.language model.globalData
+
         formErrors =
             getFieldErrors Form model.errors
 
@@ -215,15 +224,15 @@ view model =
             , h1 [] [ text "Gingko" ]
             ]
         , div [ class "page-bg" ] []
-        , h1 [ class "headline" ] [ text "Write better, faster." ]
-        , div [ class "header" ] [ span [ class "alt-action" ] [ text "Already have an account? ", a [ href "/login" ] [ text "Login" ] ] ]
+        , h1 [ class "headline" ] [ text (Translation.enKo lang "Write better, faster." "더 잘, 더 빠르게 쓰세요.") ]
+        , div [ class "header" ] [ span [ class "alt-action" ] [ text (Translation.enKo lang "Already have an account? " "이미 계정이 있으신가요? "), a [ href "/login" ] [ text (Translation.enKo lang "Login" "로그인") ] ] ]
         , div [ class "center-form" ]
             [ form [ onSubmit SubmittedForm ]
                 [ div [] [ text (String.join "\n" formErrors) ]
                 , div [ class "input-error" ] [ text (String.join "\n" passwordErrors) ]
                 , input
                     [ id "signup-password"
-                    , placeholder "Password (min. 7 characters)"
+                    , placeholder (Translation.enKo lang "Password (min. 7 characters)" "비밀번호 (7자 이상)")
                     , onInput EnteredPassword
                     , type_ "password"
                     , value model.password
@@ -233,14 +242,14 @@ view model =
                 , div [ class "input-error" ] [ text (String.join "\n" passwordConfirmErrors) ]
                 , input
                     [ id "signup-password-confirm"
-                    , placeholder "Confirm Password"
+                    , placeholder (Translation.enKo lang "Confirm Password" "비밀번호 확인")
                     , onInput EnteredPassConfirm
                     , type_ "password"
                     , value model.passwordConfirm
                     , onBlur (Blurred PasswordConfirm)
                     ]
                     []
-                , button [ class "cta" ] [ text "Reset Password" ]
+                , button [ class "cta" ] [ text (Translation.enKo lang "Reset Password" "비밀번호 재설정") ]
                 ]
             ]
         ]

@@ -201,28 +201,28 @@ view lang { state } =
         ModalOpen { loginState, isFileDragging } ->
             case loginState of
                 Checking ->
-                    [ text "Checking to see if you're logged in or not..."
+                    [ text (Translation.enKo lang "Checking to see if you're logged in or not..." "로그인 여부를 확인하고 있습니다...")
                     , br [] []
                     , iframe [ src "https://gingkoapp.com/loggedin", width 0, height 0 ] []
                     , br [] []
                     , p []
-                        [ h4 [] [ text "Taking too long?" ]
-                        , text "Click "
-                        , button [ onClick ManualChosen ] [ text "here" ]
-                        , text " to download your v1 files manually."
+                        [ h4 [] [ text (Translation.enKo lang "Taking too long?" "너무 오래 걸리나요?") ]
+                        , text (Translation.enKo lang "Click " "v1 파일을 직접 다운로드하려면 ")
+                        , button [ onClick ManualChosen ] [ text (Translation.enKo lang "here" "여기") ]
+                        , text (Translation.enKo lang " to download your v1 files manually." "를 클릭하십시오.")
                         ]
                     ]
-                        |> modalWrapper ModalClosed Nothing Nothing "Import From Gingko v1"
+                        |> modalWrapper ModalClosed Nothing Nothing (Translation.enKo lang "Import From Gingko v1" "Gingko v1에서 가져오기")
 
                 LoggedIn ->
-                    [ p [] [ text "To transfer multiple trees from your old account to this new one, follow these steps." ]
+                    [ p [] [ text (Translation.enKo lang "To transfer multiple trees from your old account to this new one, follow these steps." "이전 계정의 여러 트리를 새 계정으로 옮기려면 다음 단계를 따르십시오.") ]
                     , p []
-                        [ text "1. Click here to download a backup of all your trees: "
+                        [ text (Translation.enKo lang "1. Click here to download a backup of all your trees: " "1. 여기를 클릭하여 모든 트리의 백업을 다운로드합니다: ")
                         , br [] []
-                        , a [ href "https://gingkoapp.com/export/all" ] [ text "Download Full Backup" ]
+                        , a [ href "https://gingkoapp.com/export/all" ] [ text (Translation.enKo lang "Download Full Backup" "전체 백업 다운로드") ]
                         ]
                     , p []
-                        [ text "2. Drag the backup file here:"
+                        [ text (Translation.enKo lang "2. Drag the backup file here:" "2. 백업 파일을 여기로 끌어다 놓습니다:")
                         , div
                             [ classList [ ( "file-drop-zone", True ), ( "dragged-over", isFileDragging ) ]
                             , on "dragenter" (Dec.succeed (FileDraggedOver True))
@@ -230,44 +230,44 @@ view lang { state } =
                             , on "drop" fileDropDecoder
                             ]
                             []
-                        , text "or find the file in your system: "
-                        , button [ onClick FileRequested ] [ text "Browse..." ]
+                        , text (Translation.enKo lang "or find the file in your system: " "또는 컴퓨터에서 파일을 찾습니다: ")
+                        , button [ onClick FileRequested ] [ text (Translation.enKo lang "Browse..." "찾아보기...") ]
                         ]
                     ]
-                        |> modalWrapper ModalClosed Nothing Nothing "Import From Gingko v1"
+                        |> modalWrapper ModalClosed Nothing Nothing (Translation.enKo lang "Import From Gingko v1" "Gingko v1에서 가져오기")
 
                 LoggedOut ->
-                    [ p [] [ text "To transfer trees from your old account, you need to be logged in to it." ]
-                    , p [] [ text "But it seems you are not logged in to your old account." ]
+                    [ p [] [ text (Translation.enKo lang "To transfer trees from your old account, you need to be logged in to it." "이전 계정의 트리를 옮기려면 해당 계정에 로그인되어 있어야 합니다.") ]
+                    , p [] [ text (Translation.enKo lang "But it seems you are not logged in to your old account." "하지만 이전 계정에 로그인되어 있지 않은 것 같습니다.") ]
                     , p []
                         [ text "1. "
-                        , a [ href "https://gingkoapp.com/login", target "_blank" ] [ text "Login there" ]
+                        , a [ href "https://gingkoapp.com/login", target "_blank" ] [ text (Translation.enKo lang "Login there" "해당 사이트에서 로그인합니다") ]
                         , text "."
                         ]
                     , p []
-                        [ text "2. Then, come back and ", button [ id "retry-button", onClick Retry ] [ text "Try again" ], text "." ]
+                        [ text (Translation.enKo lang "2. Then, come back and " "2. 그런 다음 돌아와서 "), button [ id "retry-button", onClick Retry ] [ text (Translation.enKo lang "Try again" "다시 시도") ], text "." ]
                     , br [] []
                     , p []
-                        [ h4 [] [ text "Having issues?" ]
-                        , text "Click "
-                        , button [ onClick ManualChosen ] [ text "here" ]
-                        , text " to download your v1 files manually."
+                        [ h4 [] [ text (Translation.enKo lang "Having issues?" "문제가 있나요?") ]
+                        , text (Translation.enKo lang "Click " "v1 파일을 직접 다운로드하려면 ")
+                        , button [ onClick ManualChosen ] [ text (Translation.enKo lang "here" "여기") ]
+                        , text (Translation.enKo lang " to download your v1 files manually." "를 클릭하십시오.")
                         ]
                     ]
-                        |> modalWrapper ModalClosed Nothing Nothing "Import From Gingko v1"
+                        |> modalWrapper ModalClosed Nothing Nothing (Translation.enKo lang "Import From Gingko v1" "Gingko v1에서 가져오기")
 
                 Manual ->
                     [ p []
                         [ text "1. "
-                        , a [ href "https://gingkoapp.com/login", target "_blank" ] [ text "Login" ]
-                        , text " to your old Gingko App account."
+                        , a [ href "https://gingkoapp.com/login", target "_blank" ] [ text (Translation.enKo lang "Login" "로그인") ]
+                        , text (Translation.enKo lang " to your old Gingko App account." "하여 이전 Gingko App 계정에 접속합니다.")
                         ]
                     , p []
-                        [ text "2. Click on the Settings (", Icon.gear defaultOptions, text ") icon." ]
+                        [ text (Translation.enKo lang "2. Click on the Settings (" "2. 설정 ("), Icon.gear defaultOptions, text (Translation.enKo lang ") icon." ") 아이콘을 클릭합니다.") ]
                     , p []
-                        [ text "3. Click 'Backup All Files'." ]
+                        [ text (Translation.enKo lang "3. Click 'Backup All Files'." "3. 'Backup All Files'를 클릭합니다.") ]
                     , p []
-                        [ text "4. Drag the backup file here:"
+                        [ text (Translation.enKo lang "4. Drag the backup file here:" "4. 백업 파일을 여기로 끌어다 놓습니다:")
                         , div
                             [ classList [ ( "file-drop-zone", True ), ( "dragged-over", isFileDragging ) ]
                             , on "dragenter" (Dec.succeed (FileDraggedOver True))
@@ -275,11 +275,11 @@ view lang { state } =
                             , on "drop" fileDropDecoder
                             ]
                             []
-                        , text "or find the file in your system: "
-                        , button [ onClick FileRequested ] [ text "Browse..." ]
+                        , text (Translation.enKo lang "or find the file in your system: " "또는 컴퓨터에서 파일을 찾습니다: ")
+                        , button [ onClick FileRequested ] [ text (Translation.enKo lang "Browse..." "찾아보기...") ]
                         ]
                     ]
-                        |> modalWrapper ModalClosed Nothing Nothing "Import From Gingko v1"
+                        |> modalWrapper ModalClosed Nothing Nothing (Translation.enKo lang "Import From Gingko v1" "Gingko v1에서 가져오기")
 
         ImportSelecting importSelection ->
             let
@@ -288,15 +288,15 @@ view lang { state } =
                         |> List.any .selected
                         |> not
             in
-            [ div [ style "display" "flex", style "margin-top" "10px" ] [ span [ style "flex" "auto" ] [ text "Name" ], span [] [ text "Last Modified" ] ]
+            [ div [ style "display" "flex", style "margin-top" "10px" ] [ span [ style "flex" "auto" ] [ text (Translation.enKo lang "Name" "이름") ], span [] [ text (Translation.enKo lang "Last Modified" "마지막 수정") ] ]
             , div [ id "import-selection-list" ] [ ul [] (List.map (viewSelectionEntry lang) importSelection) ]
             , span []
                 [ input [ id "import-select-all", type_ "checkbox", onCheck <| SelectAllToggled ] []
-                , label [ for "import-select-all" ] [ text "Select All" ]
+                , label [ for "import-select-all" ] [ text (Translation.enKo lang "Select All" "모두 선택") ]
                 ]
-            , button [ onClick SelectionDone, disabled isDisabled ] [ text "Import Selected Trees" ]
+            , button [ onClick SelectionDone, disabled isDisabled ] [ text (Translation.enKo lang "Import Selected Trees" "선택한 트리 가져오기") ]
             ]
-                |> modalWrapper ModalClosed Nothing Nothing "Import From Gingko v1"
+                |> modalWrapper ModalClosed Nothing Nothing (Translation.enKo lang "Import From Gingko v1" "Gingko v1에서 가져오기")
 
         ImportSaving importSelection ->
             let
@@ -306,12 +306,12 @@ view lang { state } =
                         |> List.length
             in
             [ p []
-                [ text <| "Importing selected " ++ String.fromInt importCount ++ " trees..."
+                [ text <| Translation.enKo lang ("Importing selected " ++ String.fromInt importCount ++ " trees...") ("선택한 트리 " ++ String.fromInt importCount ++ "개를 가져오는 중입니다...")
                 , br [] []
-                , text "This might take a while..."
+                , text (Translation.enKo lang "This might take a while..." "시간이 다소 걸릴 수 있습니다...")
                 ]
             ]
-                |> modalWrapper ModalClosed Nothing Nothing "Import From Gingko v1"
+                |> modalWrapper ModalClosed Nothing Nothing (Translation.enKo lang "Import From Gingko v1" "Gingko v1에서 가져오기")
 
 
 viewSelectionEntry : Language -> { selected : Bool, tree : ( String, Metadata, Tree ) } -> Html Msg
@@ -323,7 +323,7 @@ viewSelectionEntry lang { selected, tree } =
     li []
         [ span []
             [ input [ type_ "checkbox", checked selected, onCheck (TreeSelected id) ] []
-            , text (Metadata.getDocName mdata |> Maybe.withDefault "Untitled")
+            , text (Metadata.getDocName mdata |> Maybe.withDefault (Translation.enKo lang "Untitled" "제목 없음"))
             ]
         , span [] [ text (Metadata.getUpdatedAt mdata |> Translation.dateFormat lang) ]
         ]

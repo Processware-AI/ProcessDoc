@@ -66,23 +66,22 @@ const placeholder = /%[A-Za-z_]+:[A-Za-z0-9_]+%(?::[01])?|\{%[A-Z_]+%\}/g;
 /**
  * @type {import("elm-watch/elm-watch-node").Postprocess}
  */
-export default function postprocess({ code, compilationMode }) {
-  if (compilationMode === 'optimize') {
-    code = code.replace(placeholder, (match) => {
-      const replacement = replacements.get(match);
-      if (replacement !== undefined) return replacement;
+// Runs in every compilation mode (not just --optimize) so translations also
+// show up during `elm-watch hot` development. i18n/*.json is read once when
+// the elm-watch worker starts, so restart elm-watch after editing it.
+export default function postprocess({ code }) {
+  return code.replace(placeholder, (match) => {
+    const replacement = replacements.get(match);
+    if (replacement !== undefined) return replacement;
 
-      // A `:0`/`:1` plural suffix is only part of the token when a plural
-      // definition exists; otherwise the bare token is what gets replaced.
-      const suffix = match.slice(-2);
-      if (suffix === ":0" || suffix === ":1") {
-        const base = replacements.get(match.slice(0, -2));
-        if (base !== undefined) return base + suffix;
-      }
+    // A `:0`/`:1` plural suffix is only part of the token when a plural
+    // definition exists; otherwise the bare token is what gets replaced.
+    const suffix = match.slice(-2);
+    if (suffix === ":0" || suffix === ":1") {
+      const base = replacements.get(match.slice(0, -2));
+      if (base !== undefined) return base + suffix;
+    }
 
-      return match;
-    });
-  }
-
-  return code;
+    return match;
+  });
 }
