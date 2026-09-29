@@ -5,18 +5,19 @@ import Html exposing (Html, br, div, h1, img, p, text)
 import Html.Attributes exposing (class, id, src)
 import Html.Events exposing (on, onClick)
 import Json.Decode as Dec
+import Translation exposing (Language(..))
 
 
 
 -- VIEW
 
 
-viewEmpty : { newClicked : msg, emptyMessage : msg } -> List (Html msg)
-viewEmpty msgs =
+viewEmptyIn : Language -> { newClicked : msg, emptyMessage : msg } -> List (Html msg)
+viewEmptyIn lang msgs =
     [ div [ id "document-header" ] []
     , div [ id "empty-message" ]
-        [ h1 [] [ text "You don't have any documents" ]
-        , p [] [ text "Click to create one:" ]
+        [ h1 [] [ text (Translation.enKo lang "You don't have any documents" "문서가 없습니다") ]
+        , p [] [ text (Translation.enKo lang "Click to create one:" "클릭하여 새 문서를 만드세요:") ]
         , br [] []
         , div [ id "new-button", onClick msgs.newClicked ] [ AntIcons.fileAddOutlined [] ]
         , img [ src "", on "error" (Dec.succeed msgs.emptyMessage) ] []
@@ -24,18 +25,11 @@ viewEmpty msgs =
     ]
 
 
-viewNotFound : msg -> List (Html msg)
-viewNotFound contactSupport =
+viewNotFoundIn : Language -> msg -> List (Html msg)
+viewNotFoundIn lang _ =
     [ div [ id "document-header" ] []
     , div [ id "doc-error-message" ]
-        [ h1 [] [ text "Hmm, we couldn't find this document" ]
-        , p [] [ text "The file might have been moved, or deleted." ]
-        , br [] []
-        , p [] [ text "Is it still in your list of documents?" ]
-        , p [] [ text "If so, let us know and we'll help you fix it!" ]
-        , br [] []
-        , div [ class "modal-buttons" ]
-            [ div [ id "email-support", onClick contactSupport ] [ text "Contact Support" ]
-            ]
+        [ h1 [] [ text (Translation.enKo lang "Hmm, we couldn't find this document" "이 문서를 찾을 수 없습니다") ]
+        , p [] [ text (Translation.enKo lang "The file might have been moved, or deleted." "파일이 이동되었거나 삭제되었을 수 있습니다.") ]
         ]
     ]

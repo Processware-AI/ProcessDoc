@@ -179,5 +179,5 @@ viewSelector lang (Model { heading, content, monospace, builtin, system }) =
             , br [] []
             , select [ onSelect monospaceFunction ] (fontList monospace)
             ]
-        , button [ onClick CloseSelector ] [ text "OK" ]
+        , button [ onClick CloseSelector ] [ text (Translation.enKo lang "OK" "확인") ]
         ]

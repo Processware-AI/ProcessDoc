@@ -70,7 +70,7 @@ view msgs lang model =
         , div [ class "flex-row", class "gap-2", class "mt-3" ]
             [ input
                 [ id "add-collab-input"
-                , placeholder "New collaborator's email"
+                , placeholder (Translation.enKo lang "New collaborator's email" "새 공동 작업자 이메일")
                 , class "w-2/3"
                 , class "text-base"
                 , class "px-2"
@@ -91,7 +91,7 @@ view msgs lang model =
                 , class "cursor-pointer"
                 , onClick (msgs.addCollab model.newCollabField)
                 ]
-                [ text "Grant access" ]
+                [ text (Translation.enKo lang "Grant access" "권한 부여") ]
             ]
         , hr [ class "w-full" ] []
         , betaWarning lang
@@ -99,9 +99,9 @@ view msgs lang model =
 
     else
         [ div [ class "pt-2", class "pb-5" ]
-            [ text "You can edit this document, but you cannot manage who can access it."
+            [ text (Translation.enKo lang "You can edit this document, but you cannot manage who can access it." "이 문서를 편집할 수는 있지만, 접근 권한은 관리할 수 없습니다.")
             , br [] []
-            , text "Contact the owner of the document if you need to add or remove collaborators."
+            , text (Translation.enKo lang "Contact the owner of the document if you need to add or remove collaborators." "공동 작업자를 추가하거나 제거하려면 문서 소유자에게 문의하십시오.")
             ]
         ]
 
@@ -137,11 +137,11 @@ betaWarning lang =
         ]
         [ AntIcon.warningFilled [ width "20px", height "20px" ]
         , div []
-            [ text "Realtime Collaboration is "
-            , strong [] [ text "currently in beta" ]
-            , text "."
+            [ text (Translation.enKo lang "Realtime Collaboration is " "실시간 공동 작업은 ")
+            , strong [] [ text (Translation.enKo lang "currently in beta" "현재 베타 버전") ]
+            , text (Translation.enKo lang "." "입니다.")
             , br [] []
-            , text "Please back up your document regularly while testing this feature."
+            , text (Translation.enKo lang "Please back up your document regularly while testing this feature." "이 기능을 사용하는 동안 문서를 정기적으로 백업하십시오.")
             ]
         ]
 

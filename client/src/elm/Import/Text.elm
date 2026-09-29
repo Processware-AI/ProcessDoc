@@ -12,6 +12,7 @@ import Random
 import RandomId
 import Regex
 import SharedUI exposing (modalWrapper)
+import Translation exposing (Language)
 import Types exposing (Children(..), Tree)
 
 
@@ -97,25 +98,25 @@ setFileList files model =
 -- VIEW
 
 
-view : { closeMsg : msg, tagger : Msg -> msg } -> Model -> List (Html msg)
-view msgs { files, importSettings, field } =
+view : Language -> { closeMsg : msg, tagger : Msg -> msg } -> Model -> List (Html msg)
+view lang msgs { files, importSettings, field } =
     let
         viewFile f =
             li [ class "file-item" ] [ text <| File.name f ]
     in
-    [ h3 [] [ text "File Selection" ]
-    , button [ id "import-text-file-input", onClick (msgs.tagger FilesRequested), style "height" "48px" ] [ text "Browse Files" ]
+    [ h3 [] [ text (Translation.enKo lang "File Selection" "파일 선택") ]
+    , button [ id "import-text-file-input", onClick (msgs.tagger FilesRequested), style "height" "48px" ] [ text (Translation.enKo lang "Browse Files" "파일 찾아보기") ]
     , viewIf (not <| List.isEmpty files) <| ol [] (files |> List.map viewFile)
-    , h3 [ style "margin-top" "32px" ] [ text "Splitting Options" ]
+    , h3 [ style "margin-top" "32px" ] [ text (Translation.enKo lang "Splitting Options" "분할 옵션") ]
     , div [ id "splitting-options-list" ]
         [ div []
             [ input [ type_ "radio", id "split-by-paragraph", checked (importSettings == SplitByParagraph), onClick (msgs.tagger SetSplitByParagraph) ] []
-            , label [ for "split-by-paragraph" ] [ text "Split By Paragraph and Blank Lines" ]
+            , label [ for "split-by-paragraph" ] [ text (Translation.enKo lang "Split By Paragraph and Blank Lines" "문단 및 빈 줄로 분할") ]
             ]
         , div []
             [ input [ id "split-by-separator", type_ "radio", checked (not (importSettings == NoSplit || importSettings == SplitByParagraph)), onClick (msgs.tagger SetSplitBy) ] []
             , label [ for "split-by-separator" ]
-                [ text "Split by Separator : "
+                [ text (Translation.enKo lang "Split by Separator : " "구분자로 분할 : ")
                 , input
                     [ id "separator-input"
                     , onInput (msgs.tagger << SepFieldChanged)
@@ -126,7 +127,7 @@ view msgs { files, importSettings, field } =
             ]
         , div []
             [ input [ type_ "radio", id "no-splitting", checked (importSettings == NoSplit), onClick (msgs.tagger SetNoSplit) ] []
-            , label [ for "no-splitting" ] [ text "No Splitting (one card per file)" ]
+            , label [ for "no-splitting" ] [ text (Translation.enKo lang "No Splitting (one card per file)" "분할 안 함 (파일당 카드 1개)") ]
             ]
         ]
     , button
@@ -136,9 +137,9 @@ view msgs { files, importSettings, field } =
         , style "margin-top" "32px"
         , style "height" "48px"
         ]
-        [ text "Import" ]
+        [ text (Translation.enKo lang "Import" "가져오기") ]
     ]
-        |> modalWrapper msgs.closeMsg (Just "import-text-modal") (Just [ ( "import-text-modal-container", True ) ]) "Import Text Files"
+        |> modalWrapper msgs.closeMsg (Just "import-text-modal") (Just [ ( "import-text-modal-container", True ) ]) (Translation.enKo lang "Import Text Files" "텍스트 파일 가져오기")
 
 
 toTree : Random.Seed -> List String -> List String -> Settings -> ( Tree, Random.Seed, Maybe String )

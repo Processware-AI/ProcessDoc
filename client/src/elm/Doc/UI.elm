@@ -214,7 +214,7 @@ viewTemplateSelector session language msgs =
             , if Feature.enabled AINewDocument session then
                 div [ id "template-ai-new", class "template-item", onClick msgs.aiNewClicked ]
                     [ div [ classList [ ( "template-thumbnail", True ) ] ] [ Icon.circuitBoard (Icon.defaultOptions |> Icon.size 48) ]
-                    , div [ class "template-title" ] [ textNoTr "Generate with AI" ]
+                    , div [ class "template-title" ] [ textNoTr (Translation.enKo language "Generate with AI" "AI로 생성") ]
                     ]
 
               else
@@ -314,7 +314,7 @@ viewWordCount model msgs =
         ]
     , span [ style "text-align" "center" ] [ text language (WordCountTotalCards stats.cards) ]
     ]
-        |> modalWrapper msgs.modalClosed Nothing Nothing "Word & Character Counts"
+        |> modalWrapper msgs.modalClosed Nothing Nothing (Translation.enKo language "Word & Character Counts" "단어 및 글자 수")
 
 
 
@@ -695,8 +695,8 @@ viewTooltip lang ( el, tipPos, content ) =
         [ text lang content, div [ class "tooltip-arrow" ] [] ]
 
 
-viewAIPrompt : String -> Bool -> (String -> msg) -> Html msg
-viewAIPrompt ctrlOrCmd isWaiting promptInputMsg =
+viewAIPrompt : Language -> String -> Bool -> (String -> msg) -> Html msg
+viewAIPrompt lang ctrlOrCmd isWaiting promptInputMsg =
     let
         shortCutKey k =
             span [ class "shortcut-key" ] [ textNoTr k ]
@@ -718,14 +718,14 @@ viewAIPrompt ctrlOrCmd isWaiting promptInputMsg =
                 []
             , if not isWaiting then
                 div [ class "ai-prompt-instructions" ]
-                    [ shortCut [ "Esc" ] " Cancel"
-                    , shortCut [ ctrlOrCmd, "J" ] " Generate Below"
-                    , shortCut [ ctrlOrCmd, "L" ] " Generate Children"
+                    [ shortCut [ "Esc" ] (" " ++ Translation.enKo lang "Cancel" "취소")
+                    , shortCut [ ctrlOrCmd, "J" ] (" " ++ Translation.enKo lang "Generate Below" "아래에 생성")
+                    , shortCut [ ctrlOrCmd, "L" ] (" " ++ Translation.enKo lang "Generate Children" "하위 카드 생성")
                     ]
 
               else
                 div [ class "switcher-instructions" ]
-                    [ div [ class "switcher-instruction" ] [ textNoTr "Generating..." ]
+                    [ div [ class "switcher-instruction" ] [ textNoTr (Translation.enKo lang "Generating..." "생성 중...") ]
                     ]
             ]
         ]

@@ -21,7 +21,7 @@ viewAINewPrompt :
     -> List (Html msg)
 viewAINewPrompt lang msgs isWaiting =
     [ div [ css [ displayFlex, flexDirection column, property "gap" "10px" ] ]
-        [ label [ for "ai-new-prompt", css [ fontWeight bold ] ] [ text "Prompt" ]
+        [ label [ for "ai-new-prompt", css [ fontWeight bold ] ] [ text (Translation.enKo lang "Prompt" "프롬프트") ]
         , textarea
             [ id "ai-new-prompt"
             , css [ fontSize (px 16), padding (px 10) ]
@@ -50,14 +50,14 @@ viewAINewPrompt lang msgs isWaiting =
                 ]
                 [ text
                     (if not isWaiting then
-                        "Generate"
+                        Translation.enKo lang "Generate" "생성"
 
                      else
-                        "Generating..."
+                        Translation.enKo lang "Generating..." "생성 중..."
                     )
                 ]
             ]
         ]
     ]
         |> List.map toUnstyled
-        |> modalWrapper msgs.modalClosed Nothing Nothing "Generate Document"
+        |> modalWrapper msgs.modalClosed Nothing Nothing (Translation.enKo lang "Generate Document" "문서 생성")

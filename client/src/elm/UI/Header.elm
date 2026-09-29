@@ -104,7 +104,7 @@ viewHeader msgs { session, title_, titleField_, headerMenu, isGitLike, isOwner, 
         titleArea =
             let
                 titleString =
-                    titleField_ |> Maybe.withDefault "Untitled"
+                    titleField_ |> Maybe.withDefault (Translation.enKo language "Untitled" "제목 없음")
             in
             span [ id "title" ]
                 [ div [ class "title-grow-wrap" ]

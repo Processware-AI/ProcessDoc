@@ -6,6 +6,7 @@ import Html exposing (Html, div, input, span, text)
 import Html.Attributes exposing (attribute, class, id, placeholder, type_, value)
 import Html.Events exposing (onClick, onInput)
 import List.Extra as ListExtra
+import Translation exposing (Language)
 
 
 
@@ -103,8 +104,8 @@ search term model =
 -- VIEW
 
 
-view : msg -> (String -> msg) -> Model -> List (Html msg)
-view closeClicked searchInput { currentDocument, selectedDocument, searchField, docList } =
+view : Language -> msg -> (String -> msg) -> Model -> List (Html msg)
+view lang closeClicked searchInput { currentDocument, selectedDocument, searchField, docList } =
     let
         filteredList =
             docList
@@ -120,18 +121,18 @@ view closeClicked searchInput { currentDocument, selectedDocument, searchField, 
                 , value searchField
                 , onInput searchInput
                 , class "mousetrap"
-                , placeholder "Type file name to select"
+                , placeholder (Translation.enKo lang "Type file name to select" "선택할 파일 이름 입력")
                 , attribute "data-private" "lipsum"
                 ]
                 []
-            , DocList.viewSwitcher currentDocument
+            , DocList.viewSwitcher lang currentDocument
                 { docList = filteredList
                 , selected = selectedDocument |> Maybe.withDefault (Metadata.getDocId currentDocument)
                 }
             , div [ class "switcher-instructions" ]
-                [ div [ class "switcher-instruction" ] [ span [ class "shortcut-key" ] [ text "↓ ↑" ], text " to select" ]
-                , div [ class "switcher-instruction" ] [ span [ class "shortcut-key" ] [ text "Enter" ], text " to open" ]
-                , div [ class "switcher-instruction" ] [ span [ class "shortcut-key" ] [ text "Esc" ], text " to dismiss" ]
+                [ div [ class "switcher-instruction" ] [ span [ class "shortcut-key" ] [ text "↓ ↑" ], text (Translation.enKo lang " to select" " 선택") ]
+                , div [ class "switcher-instruction" ] [ span [ class "shortcut-key" ] [ text "Enter" ], text (Translation.enKo lang " to open" " 열기") ]
+                , div [ class "switcher-instruction" ] [ span [ class "shortcut-key" ] [ text "Esc" ], text (Translation.enKo lang " to dismiss" " 닫기") ]
                 ]
             ]
         ]

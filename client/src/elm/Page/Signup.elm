@@ -195,6 +195,9 @@ sendSignupRequest validModel =
 view : Model -> Html Msg
 view model =
     let
+        lang =
+            GlobalData.language model.globalData
+
         emailErrors =
             getFieldErrors Email model.errors
 
@@ -203,22 +206,22 @@ view model =
 
         showHidePassword =
             if model.showPassword then
-                div [ id "show-hide-password", onClick ToggleShowPassword ] [ AntIcons.eyeInvisibleOutlined [ Svg.Attributes.class "icon" ], text "Hide" ]
+                div [ id "show-hide-password", onClick ToggleShowPassword ] [ AntIcons.eyeInvisibleOutlined [ Svg.Attributes.class "icon" ], text (Translation.enKo lang "Hide" "숨기기") ]
 
             else
-                div [ id "show-hide-password", onClick ToggleShowPassword ] [ AntIcons.eyeOutlined [ Svg.Attributes.class "icon" ], text "Show" ]
+                div [ id "show-hide-password", onClick ToggleShowPassword ] [ AntIcons.eyeOutlined [ Svg.Attributes.class "icon" ], text (Translation.enKo lang "Show" "보기") ]
     in
     div [ id "form-page" ]
         [ div [ class "page-backdrop" ] []
         , div [ class "page-bg" ] []
         , a [ class "brand", href "{%HOMEPAGE_URL%}" ] [ img [ id "logo", src "gingko-leaf-logo.svg" ] [] ]
         , div [ class "form-header-container" ]
-            [ h1 [ class "headline" ] [ text "Signup to Gingko Writer" ]
-            , p [ class "subtitle" ] [ text "Write the way you think, organize as you go, and let your words flow." ]
+            [ h1 [ class "headline" ] [ text (Translation.enKo lang "Signup to Gingko Writer" "Gingko Writer 회원가입") ]
+            , p [ class "subtitle" ] [ text (Translation.enKo lang "Write the way you think, organize as you go, and let your words flow." "생각하는 방식 그대로 쓰고, 쓰면서 정리하고, 글이 자연스럽게 흘러가게 하세요.") ]
             ]
         , div [ class "center-form" ]
             [ form [ onSubmit SubmittedForm ]
-                [ label [ for "singup-email" ] [ text "Email" ]
+                [ label [ for "singup-email" ] [ text (Translation.enKo lang "Email" "이메일") ]
                 , input
                     [ id "signup-email"
                     , classList [ ( "has-error", List.length emailErrors > 0 ) ]
@@ -229,8 +232,8 @@ view model =
                     , autocomplete True
                     ]
                     []
-                , viewErrors Email model.errors
-                , label [ for "singup-password" ] [ text "Password (7+ characters)", showHidePassword ]
+                , viewErrors lang Email model.errors
+                , label [ for "singup-password" ] [ text (Translation.enKo lang "Password (7+ characters)" "비밀번호 (7자 이상)"), showHidePassword ]
                 , input
                     [ id "signup-password"
                     , onInput EnteredPassword
@@ -246,15 +249,15 @@ view model =
                     , autocomplete True
                     ]
                     []
-                , viewErrors Password model.errors
+                , viewErrors lang Password model.errors
                 , div [ style "display" "flex", style "gap" "6px" ]
                     [ input [ type_ "checkbox", id "email-optin", checked model.didOptIn, onCheck ToggledOptIn ] []
-                    , label [ for "email-optin" ] [ text "Email me help & tips (~6 emails)", br [] [], text "and product news (every ~2 months)." ]
+                    , label [ for "email-optin" ] [ text (Translation.enKo lang "Email me help & tips (~6 emails)" "도움말과 팁(약 6통)"), br [] [], text (Translation.enKo lang "and product news (every ~2 months)." "및 제품 소식(약 2개월마다)을 이메일로 받겠습니다.") ]
                     ]
-                , viewErrors Form model.errors
-                , button [ id "signup-button", class "cta" ] [ text "Start Writing" ]
-                , div [ id "post-cta-divider" ] [ hr [] [], div [] [ text "or" ], hr [] [] ]
-                , span [ class "alt-action" ] [ text "Already have an account? ", a [ href "/login" ] [ text "Login" ] ]
+                , viewErrors lang Form model.errors
+                , button [ id "signup-button", class "cta" ] [ text (Translation.enKo lang "Start Writing" "글쓰기 시작") ]
+                , div [ id "post-cta-divider" ] [ hr [] [], div [] [ text (Translation.enKo lang "or" "또는") ], hr [] [] ]
+                , span [ class "alt-action" ] [ text (Translation.enKo lang "Already have an account? " "이미 계정이 있으신가요? "), a [ href "/login" ] [ text (Translation.enKo lang "Login" "로그인") ] ]
                 ]
             ]
         ]
@@ -271,57 +274,57 @@ type FieldError
     | InvalidPassword
 
 
-viewErrors : Field -> List ( Field, FieldError ) -> Html msg
-viewErrors field errors =
+viewErrors : Language -> Field -> List ( Field, FieldError ) -> Html msg
+viewErrors lang field errors =
     case field of
         Form ->
             let
                 formErrors =
                     getFieldErrors Form errors
             in
-            viewIf (not <| List.isEmpty formErrors) (div [ id "form-errors" ] (List.map (viewError field) formErrors))
+            viewIf (not <| List.isEmpty formErrors) (div [ id "form-errors" ] (List.map (viewError lang field) formErrors))
 
         Email ->
             let
                 emailErrors =
                     getFieldErrors Email errors
             in
-            viewIf (not <| List.isEmpty emailErrors) (div [ class "input-errors" ] (List.map (viewError field) emailErrors))
+            viewIf (not <| List.isEmpty emailErrors) (div [ class "input-errors" ] (List.map (viewError lang field) emailErrors))
 
         Password ->
             let
                 passwordErrors =
                     getFieldErrors Password errors
             in
-            viewIf (not <| List.isEmpty passwordErrors) (div [ class "input-errors" ] (List.map (viewError field) passwordErrors))
+            viewIf (not <| List.isEmpty passwordErrors) (div [ class "input-errors" ] (List.map (viewError lang field) passwordErrors))
 
 
-viewError : Field -> FieldError -> Html msg
-viewError field error =
+viewError : Language -> Field -> FieldError -> Html msg
+viewError lang field error =
     case ( field, error ) of
         ( Form, ServerIssue ) ->
-            text "Server Issue. Something wrong on our end. Please let us know!"
+            text (Translation.enKo lang "Server Issue. Something wrong on our end. Please let us know!" "서버 문제가 발생했습니다. 저희 쪽에 문제가 있는 것 같습니다. 알려 주세요!")
 
         ( Form, TimeoutError ) ->
-            text "Timed out. Maybe there's a server issue?"
+            text (Translation.enKo lang "Timed out. Maybe there's a server issue?" "시간이 초과되었습니다. 서버에 문제가 있는 것 같습니다.")
 
         ( Form, NetworkErrorMsg ) ->
-            text "Network error. Maybe you're offline?"
+            text (Translation.enKo lang "Network error. Maybe you're offline?" "네트워크 오류입니다. 오프라인 상태인지 확인해 주세요.")
 
         ( Form, UsernameExists ) ->
-            span [] [ text "Username already exists. ", a [ href "/login" ] [ text "Login" ], text "?" ]
+            span [] [ text (Translation.enKo lang "Username already exists. " "이미 존재하는 계정입니다. "), a [ href "/login" ] [ text (Translation.enKo lang "Login" "로그인") ], text (Translation.enKo lang "?" "하시겠습니까?") ]
 
         ( Email, BlankEmail ) ->
-            text "Please enter an email address."
+            text (Translation.enKo lang "Please enter an email address." "이메일 주소를 입력해 주세요.")
 
         ( Email, InvalidEmail eml ) ->
-            text (eml ++ " does not seem to be a valid email.")
+            text (eml ++ Translation.enKo lang " does not seem to be a valid email." "은(는) 올바른 이메일 주소가 아닌 것 같습니다.")
 
         ( Password, BlankPassword ) ->
-            text "Please enter a password."
+            text (Translation.enKo lang "Please enter a password." "비밀번호를 입력해 주세요.")
 
         ( Password, InvalidPassword ) ->
-            text "Passwords should have 7 characters or more."
+            text (Translation.enKo lang "Passwords should have 7 characters or more." "비밀번호는 7자 이상이어야 합니다.")
 
         _ ->
             text ""

@@ -69,21 +69,21 @@ viewFullscreenButtons { language, isMac, dirty, lastLocalSave, lastRemoteSave, c
     let
         saveShortcutTip =
             if isMac then
-                "⌘+S to Save"
+                Translation.enKo language "⌘+S to Save" "⌘+S로 저장"
 
             else
-                "Ctrl+S to Save"
+                Translation.enKo language "Ctrl+S to Save" "Ctrl+S로 저장"
 
         saveAndCloseTip =
             if isMac then
-                "⌘+Enter to Save and Exit Fullscreen"
+                Translation.enKo language "⌘+Enter to Save and Exit Fullscreen" "⌘+Enter로 저장 후 전체 화면 종료"
 
             else
-                "Ctrl+Enter to Save and Exit Fullscreen"
+                Translation.enKo language "Ctrl+Enter to Save and Exit Fullscreen" "Ctrl+Enter로 저장 후 전체 화면 종료"
     in
     div [ id "fullscreen-buttons", classList [ ( "dirty", dirty ) ] ]
         [ div
-            [ id "fullscreen-exit", onClick msgs.exitFullscreenRequested, title "Exit Fullscreen Mode" ]
+            [ id "fullscreen-exit", onClick msgs.exitFullscreenRequested, title (Translation.enKo language "Exit Fullscreen Mode" "전체 화면 종료") ]
             [ Icons.fullscreenExitOutlined [ width 24 ] ]
         , div []
             [ div [ id "fullscreen-save-button", onClick msgs.saveChanges, title saveShortcutTip ] [ Icons.saveOutlined [ width 24 ] ]

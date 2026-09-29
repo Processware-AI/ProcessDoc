@@ -118,7 +118,7 @@ view config model =
             viewHistory config zipper
 
         Empty ->
-            div [ id "history-menu" ] [ textNoTr "No history" ]
+            div [ id "history-menu" ] [ textNoTr (Translation.enKo config.lang "No history" "기록 없음") ]
 
 
 viewHistory : ViewConfig msg -> Zipper Version -> Html msg

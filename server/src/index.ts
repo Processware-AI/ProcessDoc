@@ -698,7 +698,7 @@ app.post('/signup', async (req, res) => {
   const salt = crypto.randomBytes(16).toString('hex');
   let hash = crypto.pbkdf2Sync(password, salt, iterations, keylen, digest).toString(encoding);
   try {
-    let userInsertInfo = userSignup.run(email, salt, hash, timestamp, confirmTime, FULL_ACCESS_STATUS, "en");
+    let userInsertInfo = userSignup.run(email, salt, hash, timestamp, confirmTime, FULL_ACCESS_STATUS, "ko");
     const user = userByRowId.get(userInsertInfo.lastInsertRowid);
 
     req.session.user = email;
