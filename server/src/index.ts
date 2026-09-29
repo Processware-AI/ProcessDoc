@@ -1,6 +1,7 @@
 //@ts-strict-ignore
 // Node.js
 import fs from "node:fs";
+import { fileURLToPath } from "node:url";
 import crypto from "node:crypto";
 import { Buffer } from 'node:buffer';
 
@@ -1240,7 +1241,7 @@ app.get('*', (req, res) => {
   if (req.session) {
     req.session.lastAccessed = Date.now();
   }
-  const index = new URL('../../client/web/index.html', import.meta.url).pathname;
+  const index = fileURLToPath(new URL('../../client/web/index.html', import.meta.url));
   res.sendFile(index);
 });
 
