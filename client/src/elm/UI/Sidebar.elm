@@ -11,7 +11,6 @@ import Html exposing (Html)
 import Html.Styled exposing (a, button, div, form, fromUnstyled, h2, hr, img, input, text, toUnstyled)
 import Html.Styled.Attributes as A exposing (action, class, classList, css, href, id, method, name, src, style, type_, value)
 import Html.Styled.Events exposing (onClick, onMouseEnter, onMouseLeave)
-import MD5
 import Octicons
 import Session exposing (LoggedIn, PaymentStatus(..))
 import Translation exposing (Language(..), TranslationId(..), langToString, languageName)
@@ -265,9 +264,9 @@ viewSidebarMenu session lang custId_ msgs accountEmail dropdownState =
     case dropdownState of
         Account langMenuEl_ ->
             let
-                gravatarImg =
+                avatarImg =
                     img
-                        [ src ("https://www.gravatar.com/avatar/" ++ (accountEmail |> String.trim |> String.toLower |> MD5.hex) ++ "?d=mp")
+                        [ src (Utils.avatar 22 accountEmail)
                         , class "icon"
                         ]
                         []
@@ -281,7 +280,7 @@ viewSidebarMenu session lang custId_ msgs accountEmail dropdownState =
                     ]
                 ]
                 [ div [ onClickStopStyled msgs.noOp, class "sidebar-menu-item", class "no-action" ]
-                    [ gravatarImg, text accountEmail ]
+                    [ avatarImg, text accountEmail ]
                 , hr [] []
                 , ternary (Feature.enabled VotingAppLinkInMenu session)
                     (a [ href ("https://gingkowriter.voxemporium.com#" ++ Utils.voxEmporiumHash (Session.name session)), onClickStopStyled msgs.noOp, A.target "_blank", class "sidebar-menu-item" ]

@@ -103,7 +103,7 @@ viewCollabInHeader msgs collab =
         , onMouseLeave msgs.tooltipClosed
         ]
         [ img
-            [ src (Utils.gravatar 22 collab.name)
+            [ src (Utils.avatar 22 collab.name)
             , style "mix-blend-mode" "luminosity"
             , style "border-radius" "50%"
             ]

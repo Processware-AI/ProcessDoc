@@ -109,7 +109,7 @@ view msgs lang model =
 viewCollab : (String -> msg) -> String -> Html msg
 viewCollab removeMsg email =
     div [ class "flex", class "items-center", class "gap-2", class "mb-2" ]
-        [ img [ src (Utils.gravatar 22 email) ] []
+        [ img [ src (Utils.avatar 22 email) ] []
         , span [ class "cursor-default" ] [ text email ]
         , AntIcon.closeCircleFilled
             [ width "16px"

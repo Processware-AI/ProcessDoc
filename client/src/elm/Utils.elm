@@ -1,4 +1,4 @@
-module Utils exposing (delay, emptyText, getFieldErrors, gravatar, hash, hexEncode, myDebug, onClickStop, onClickStopStyled, ternary, text, textElmCss, textNoTr, voxEmporiumHash)
+module Utils exposing (avatar, delay, emptyText, getFieldErrors, hash, hexEncode, myDebug, onClickStop, onClickStopStyled, ternary, text, textElmCss, textNoTr, voxEmporiumHash)
 
 {--import DebugToJson exposing (pp)--}
 
@@ -13,6 +13,7 @@ import Process
 import SHA256
 import Task
 import Translation exposing (Language, TranslationId, tr)
+import Url
 
 
 ternary : Bool -> a -> a -> a
@@ -64,18 +65,45 @@ delay ms msg =
     Task.perform (always msg) (Process.sleep <| toFloat ms)
 
 
-gravatar : Int -> String -> String
-gravatar size rawEmail =
+{-| Locally generated avatar (no external request): the email's first letter
+on a circle whose color is derived from the email. Returns a data: URI for `img src`.
+-}
+avatar : Int -> String -> String
+avatar size rawEmail =
     let
         email =
             rawEmail |> String.trim |> String.toLower
 
-        emailHash =
-            email
-                |> SHA256.fromString
-                |> SHA256.toHex
+        initial =
+            case String.uncons email of
+                Just ( c, _ ) ->
+                    if Char.isAlphaNum c then
+                        String.fromChar (Char.toUpper c)
+
+                    else
+                        "?"
+
+                Nothing ->
+                    "?"
+
+        hue =
+            hashString 0 email |> modBy 360 |> String.fromInt
+
+        sizeStr =
+            String.fromInt size
+
+        svg =
+            "<svg xmlns='http://www.w3.org/2000/svg' width='"
+                ++ sizeStr
+                ++ "' height='"
+                ++ sizeStr
+                ++ "' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='hsl("
+                ++ hue
+                ++ ",45%,50%)'/><text x='50' y='50' dy='.35em' text-anchor='middle' font-family='sans-serif' font-size='52' fill='white'>"
+                ++ initial
+                ++ "</text></svg>"
     in
-    "https://www.gravatar.com/avatar/" ++ emailHash ++ "?s=" ++ String.fromInt size ++ "&d=identicon"
+    "data:image/svg+xml," ++ Url.percentEncode svg
 
 
 
