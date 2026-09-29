@@ -5,9 +5,6 @@ import * as data from './data.js'
 //import Worker from "worker-loader!./data.worker.js";
 import hlc from '@tpp/hybrid-logical-clock'
 import uuid from '@tpp/simple-uuid'
-// Initialize Error Reporting
-import * as Sentry from '@sentry/browser'
-import LogRocket from 'logrocket'
 import PouchDB from 'pouchdb'
 import { ImmortalStorage, IndexedDbStore, LocalStorageStore, SessionStorageStore } from 'immortal-db'
 
@@ -21,20 +18,6 @@ const platform = require("platform");
 const config = require("../../config.js");
 const mycrypt = require("./encrypt.js");
 const PersistentWebSocket = require("pws");
-
-if(window.location.origin === config.PRODUCTION_SERVER) {
-  Sentry.init({ dsn: config.SENTRY_DSN
-    , integrations: [new Sentry.BrowserTracing()]
-    , tracesSampleRate: 1.0
-  });
-
-  LogRocket.init(config.LOGROCKET_APPID);
-  LogRocket.getSessionURL(sessionURL => {
-    Sentry.configureScope(scope => {
-      scope.setExtra("sessionURL", sessionURL);
-    });
-  });
-}
 
 const Dexie = require("dexie").default;
 let ImmortalDB;
@@ -169,7 +152,7 @@ async function setUserDbs(eml) {
   // HEAD request to /session to check if we're logged in
   let sessionResponse = await fetch("/session", { method: "HEAD" });
   if (sessionResponse.status === 401) {
-    Sentry.captureMessage('401: Unauthorized', { extra: { email } });
+    console.warn('401: Unauthorized', email);
     await logout();
     return;
   }
@@ -204,8 +187,6 @@ async function setUserDbs(eml) {
     }
     firstLoad = false;
   });
-
-  thirdPartyScriptsInit(eml)
 }
 
 
@@ -260,11 +241,11 @@ function initWebSocket () {
           if (data.d.length > 0) {
             await dexie.cards.bulkPut(data.d.map(c => ({ ...c, synced: true })))
 
-            // send encrypted unsynced local cards to Sentry
+            // log unsynced local cards for debugging
             const unsyncedCards = await dexie.cards.where('treeId').equals(TREE_ID).and(c => !c.synced).toArray();
-            Sentry.captureMessage('cardsConflict: cards conflict ' + TREE_ID, { extra: { unsyncedCards , error: data.e} })
+            console.error('cardsConflict: cards conflict ' + TREE_ID, { unsyncedCards, error: data.e })
           } else {
-            Sentry.captureMessage('cardsConflict: no cards ' + TREE_ID, { extra: { error: data.e} })
+            console.error('cardsConflict: no cards ' + TREE_ID, { error: data.e })
             const numberUnsynced = await dexie.cards.where('treeId').equals(TREE_ID).and(c => !c.synced).count();
             const msg = `Error syncing ${numberUnsynced} change${numberUnsynced == 1 ? "" : "s"}. Try refreshing the page.\n\nIf this error persists, please contact support!`;
             toElm(msg, 'appMsgs', 'ErrorAlert');
@@ -377,7 +358,7 @@ function initWebSocket () {
   }
 
   ws.onerror = (e) => {
-    Sentry.captureException(e);
+    console.error(e);
     if (wsErrorCount == 3 || wsErrorCount == 10 || wsErrorCount >= 20) {
       let msg = `Error with the current session.\nTry refreshing.\n\nIf it persists, export a JSON backup of recent work, and log out and back in.`
       toElm(msg, 'appMsgs', 'ErrorAlert');
@@ -391,63 +372,6 @@ function initWebSocket () {
     toElm([], 'docMsgs', 'RecvCollabUsers');
 
     clearInterval(interval)
-  }
-}
-
-
-/* === Third-Party Scripts === */
-
-// Stripe
-const stripe = Stripe(config.STRIPE_PUBLIC_KEY);
-
-const createCheckoutSession = function(userEmail, priceId) {
-  return fetch("/create-checkout-session", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      priceId: priceId,
-      customer_email: userEmail
-    })
-  }).then(function(result) {
-    return result.json();
-  });
-}
-
-// LogRocket and Beamer
-function thirdPartyScriptsInit (email) {
-  LogRocket.identify(email)
-
-  if (email !== 'cypress@testing.com') {
-    self.fwSettings = {
-      'widget_id': config.FRESHDESK_APPID
-    }
-    !function () {
-      if ('function' != typeof window.FreshworksWidget) {
-        var n = function () {n.q.push(arguments)}
-        n.q = [], window.FreshworksWidget = n
-      }
-    }()
-    let freshdeskScript = document.createElement('script')
-    freshdeskScript.setAttribute('src', `https://euc-widget.freshworks.com/widgets/${config.FRESHDESK_APPID}.js`)
-    freshdeskScript.setAttribute('async', '')
-    freshdeskScript.setAttribute('defer', '')
-    document.head.appendChild(freshdeskScript)
-    FreshworksWidget('hide', 'launcher')
-  }
-
-  if (window.location.origin === config.PRODUCTION_SERVER) {
-    self.beamer_config = {
-      product_id: config.BEAMER_APPID,
-      selector: '#notifications-icon',
-      user_id: email,
-      user_email: email
-    }
-    let beamerScript = document.createElement('script')
-    beamerScript.setAttribute('src', 'https://app.getbeamer.com/js/beamer-embed.js')
-    beamerScript.setAttribute('defer', 'defer')
-    document.head.appendChild(beamerScript)
   }
 }
 
@@ -1028,20 +952,12 @@ const fromElm = (msg, elmData) => {
 
     EmptyMessageShown: () => {},
 
-    ShowWidget: () => {
-      FreshworksWidget('open');
-    },
+    // Support widget (Freshdesk), Beamer and Stripe checkout are removed.
+    ShowWidget: () => {},
 
-    InitBeamer: () => {
+    InitBeamer: () => {},
 
-    },
-
-    CheckoutButtonClicked: async () => {
-      let priceId = config.PRICE_DATA[elmData.currency][elmData.billing][elmData.plan];
-      let userEmail = elmData.email;
-      let data = await createCheckoutSession(userEmail, priceId);
-      stripe.redirectToCheckout({ sessionId: data.sessionId })
-    },
+    CheckoutButtonClicked: () => {},
 
     SocketSend: () => {},
   };

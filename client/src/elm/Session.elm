@@ -125,17 +125,12 @@ add14days time =
         |> (\ms -> 3600 * 24 * 1000 * 14 + ms |> Time.millisToPosix)
 
 
+{-| Always Nothing: there is no trial period, so every account has full access
+(no upgrade button, no "trial expired" editing block).
+-}
 daysLeft : Time.Posix -> LoggedIn -> Maybe Int
-daysLeft cTime session =
-    case paymentStatus session of
-        Trial expiry ->
-            ((Time.posixToMillis expiry - Time.posixToMillis cTime) |> toFloat)
-                / (1000 * 3600 * 24)
-                |> round
-                |> Just
-
-        Customer _ ->
-            Nothing
+daysLeft _ _ =
+    Nothing
 
 
 isNotConfirmed : LoggedIn -> Bool

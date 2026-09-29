@@ -70,6 +70,10 @@ const userSetLanguage = db.prepare('UPDATE users SET language = ? WHERE id = ?')
 const userSetPaymentStatus = db.prepare('UPDATE users SET paymentStatus = ? WHERE id = ?');
 const expireTestUser = db.prepare("UPDATE users SET paymentStatus='trial:' || CAST(1000*(unixepoch() - 2*24*60*60) AS TEXT) WHERE id = 'cypress@testing.com'");
 
+// No trial or paid plans: every account gets full access.
+const FULL_ACCESS_STATUS = 'customer:local';
+db.prepare("UPDATE users SET paymentStatus = ? WHERE paymentStatus IS NULL OR paymentStatus LIKE 'trial:%'").run(FULL_ACCESS_STATUS);
+
 // Reset Token Table
 const resetToken = db.prepare('SELECT * FROM resetTokens WHERE token = ?');
 const resetTokenInsert = db.prepare('INSERT INTO resetTokens (token, email, createdAt) VALUES (?, ?, ?)');
@@ -690,12 +694,11 @@ app.post('/signup', async (req, res) => {
   let userDbName = `userdb-${toHex(email)}`;
   const timestamp = Date.now();
   const confirmTime = timestamp; //Until we re-implement welcome emails and newsletters, don't show 'confirm your email' message
-  const trialExpiry = timestamp + 14*24*3600*1000;
 
   const salt = crypto.randomBytes(16).toString('hex');
   let hash = crypto.pbkdf2Sync(password, salt, iterations, keylen, digest).toString(encoding);
   try {
-    let userInsertInfo = userSignup.run(email, salt, hash, timestamp, confirmTime, "trial:" + trialExpiry, "en");
+    let userInsertInfo = userSignup.run(email, salt, hash, timestamp, confirmTime, FULL_ACCESS_STATUS, "en");
     const user = userByRowId.get(userInsertInfo.lastInsertRowid);
 
     req.session.user = email;

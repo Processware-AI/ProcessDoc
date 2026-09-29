@@ -271,24 +271,6 @@ viewSidebarMenu session lang custId_ msgs accountEmail dropdownState =
                         , class "icon"
                         ]
                         []
-
-                manageSubBtn =
-                    case custId_ of
-                        Just custId ->
-                            form [ method "POST", action "/create-portal-session" ]
-                                [ input [ type_ "hidden", name "customer_id", value custId ] []
-                                , button [ id "manage-subscription-button", type_ "submit" ]
-                                    [ div [ class "icon" ] [ AntIcons.creditCardOutlined [] |> fromUnstyled ]
-                                    , textElmCss lang ManageSubscription
-                                    ]
-                                ]
-
-                        Nothing ->
-                            div
-                                [ onClickStopStyled msgs.upgrade
-                                , class "sidebar-menu-item"
-                                ]
-                                [ div [ class "icon" ] [ AntIcons.creditCardOutlined [] |> fromUnstyled ], textElmCss lang Upgrade ]
             in
             [ div
                 [ id "account-menu"
@@ -309,7 +291,6 @@ viewSidebarMenu session lang custId_ msgs accountEmail dropdownState =
                     )
                     (text "")
                 , ternary (Feature.enabled VotingAppLinkInMenu session) (hr [] []) (text "")
-                , manageSubBtn
                 , div
                     [ id "language-option"
                     , class "sidebar-menu-item"
